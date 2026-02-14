@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAprendizaje - Inteligencia Artificial para la Educación</title>
+    <meta name="description" content="Proyecto innovador respaldado por la Junta de Castilla y León para integrar la IA en el sistema educativo de manera holística">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        primary: '#1e3a8a',
+                        secondary: '#3b82f6',
+                        accent: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+        .gradient-text { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #3b82f6; transition: width 0.3s; }
+        .nav-link:hover::after { width: 100%; }
+        .section-fade { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .section-fade.will-animate { opacity: 0; transform: translateY(20px); }
+        .section-fade.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+<!-- NAV -->
+<nav class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <i class="fas fa-brain text-3xl text-primary"></i>
+                <span class="text-2xl font-bold gradient-text">IAprendizaje</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#inicio" class="nav-link text-gray-700 hover:text-primary font-medium">Inicio</a>
+                <a href="#formacion" class="nav-link text-gray-700 hover:text-primary font-medium">Formación</a>
+                <a href="#recursos" class="nav-link text-gray-700 hover:text-primary font-medium">Recursos</a>
+                <a href="#herramientas" class="nav-link text-gray-700 hover:text-primary font-medium">Herramientas</a>
+                <a href="#apps" class="nav-link text-gray-700 hover:text-primary font-medium">Apps</a>
+                <a href="#presentaciones" class="nav-link text-gray-700 hover:text-primary font-medium">Presentaciones</a>
+                <a href="#contacto" class="bg-primary text-white px-5 py-2 rounded-full font-semibold hover:bg-blue-800 transition text-sm">Contacto</a>
+            </div>
+            <button class="md:hidden text-gray-700 hover:text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div class="px-4 pt-2 pb-4 space-y-2">
+            <a href="#inicio" class="block py-2 text-gray-700 hover:text-primary">Inicio</a>
+            <a href="#formacion" class="block py-2 text-gray-700 hover:text-primary">Formación</a>
+            <a href="#recursos" class="block py-2 text-gray-700 hover:text-primary">Recursos</a>
+            <a href="#herramientas" class="block py-2 text-gray-700 hover:text-primary">Herramientas</a>
+            <a href="#apps" class="block py-2 text-gray-700 hover:text-primary">Apps</a>
+            <a href="#presentaciones" class="block py-2 text-gray-700 hover:text-primary">Presentaciones</a>
+            <a href="#contacto" class="block py-2 text-primary font-semibold">Contacto</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="inicio" class="gradient-bg text-white pt-32 pb-20 px-4">
+    <div class="max-w-6xl mx-auto text-center section-fade">
+        <div class="inline-block mb-4 px-4 py-1 bg-white/20 rounded-full text-sm font-medium backdrop-blur-sm">
+            <i class="fas fa-award mr-2"></i>Proyecto respaldado por la Junta de Castilla y León · 2024/2025
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Educando hoy para el<br>mañana inteligente
+        </h1>
+        <p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto mb-10 font-light">
+            Integración holística de la Inteligencia Artificial en el sistema educativo.
+            Desde la optimización administrativa hasta la educación en IA para estudiantes.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#formacion" class="bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg">
+                <i class="fas fa-graduation-cap mr-2"></i>Explorar Formación
+            </a>
+            <a href="#recursos" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition">
+                Ver Recursos
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="py-12 bg-white -mt-10 relative z-10 max-w-5xl mx-4 md:mx-auto rounded-2xl shadow-xl">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="p-4">
+            <div class="text-4xl font-bold text-primary mb-2">3</div>
+            <div class="text-gray-600">Áreas Clave de Acción</div>
+        </div>
+        <div class="p-4 border-l-0 md:border-l border-gray-200">
+            <div class="text-4xl font-bold text-primary mb-2">20+</div>
+            <div class="text-gray-600">GPTs Personalizados</div>
+        </div>
+        <div class="p-4 border-l-0 md:border-l border-gray-200">
+            <div class="text-4xl font-bold text-primary mb-2">100%</div>
+            <div class="text-gray-600">Enfoque Ético y Legal</div>
+        </div>
+    </div>
+</section>
+
+<!-- QUÉ ES -->
+<section class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-16 section-fade">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">¿Qué es IAprendizaje?</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Un proyecto innovador que busca integrar la IA en el sistema educativo desde una visión integral y completa.
+        </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border-t-4 border-blue-500 section-fade">
+            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                <i class="fas fa-cogs text-2xl text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900">Optimización Administrativa</h3>
+            <p class="text-gray-600 leading-relaxed">Implementamos soluciones de IA para agilizar procesos administrativos, permitiendo que los centros educativos funcionen de manera más eficiente.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border-t-4 border-green-500 section-fade">
+            <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                <i class="fas fa-chalkboard-teacher text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900">Apoyo al Profesorado</h3>
+            <p class="text-gray-600 leading-relaxed">Analizamos y buscamos las herramientas inteligentes que más pueden ayudar a los docentes en la planificación de clases y creación de materiales didácticos.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border-t-4 border-purple-500 section-fade">
+            <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                <i class="fas fa-robot text-2xl text-purple-600"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900">Educación en IA</h3>
+            <p class="text-gray-600 leading-relaxed">Introducimos a los alumnos en los conceptos fundamentales de la IA, preparándolos para un futuro donde estas tecnologías serán omnipresentes.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FORMACIÓN -->
+<section id="formacion" class="py-20 bg-gray-100">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center mb-12 section-fade">
+            <span class="text-primary font-semibold tracking-wider uppercase text-sm">Formación Docente</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Del "Show" a la utilidad real</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Recursos y reflexiones para una integración con criterio, ética y sentido pedagógico.</p>
+        </div>
+
+        <!-- Warning Box -->
+        <div class="bg-amber-50 p-8 rounded-2xl border border-amber-100 mb-12 section-fade">
+            <h3 class="text-2xl font-bold text-amber-900 mb-4 flex items-center">
+                <i class="fas fa-exclamation-triangle mr-3"></i> Evitando los errores de siempre
+            </h3>
+            <p class="text-amber-800 leading-relaxed mb-6">
+                La formación docente en IA corre el riesgo de repetir fallos conocidos: <strong>mucha explicación general y demos espectaculares, pero poca utilidad real.</strong> No basta con salir de un curso con la sensación de haber visto algo "interesante".
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-5 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-amber-700 mb-2 italic">¿Qué debemos evitar?</h4>
+                    <ul class="text-sm space-y-2 text-gray-700">
+                        <li class="flex items-start"><i class="fas fa-times text-red-500 mr-2 mt-1"></i> Sesiones que parecen un "show" tecnológico sin aterrizaje.</li>
+                        <li class="flex items-start"><i class="fas fa-times text-red-500 mr-2 mt-1"></i> Herramientas que no afectan a nuestra programación real.</li>
+                        <li class="flex items-start"><i class="fas fa-times text-red-500 mr-2 mt-1"></i> Desconocimiento de los marcos legales de privacidad.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-green-700 mb-2 italic">¿Cuál es el objetivo?</h4>
+                    <ul class="text-sm space-y-2 text-gray-700">
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mr-2 mt-1"></i> Entender qué es la IA y cómo afecta a la evaluación.</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mr-2 mt-1"></i> Saber exactamente qué nos permite hacer en nuestras decisiones de aula.</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mr-2 mt-1"></i> Proteger la integridad y los datos del alumnado por encima de todo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ventajas Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500 card-hover section-fade">
+                <h3 class="font-bold text-lg mb-2 text-gray-900">Calidad sobre Tiempo</h3>
+                <p class="text-gray-600 text-sm">Más que ahorrar esfuerzo, permite enriquecer actividades y elevar el nivel de aprendizaje real.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500 card-hover section-fade">
+                <h3 class="font-bold text-lg mb-2 text-gray-900">Evaluación Auténtica</h3>
+                <p class="text-gray-600 text-sm">Nos obliga a repensar qué evaluamos, enfocándonos más en el proceso que en el producto final.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-purple-500 card-hover section-fade">
+                <h3 class="font-bold text-lg mb-2 text-gray-900">Políticas Coherentes</h3>
+                <p class="text-gray-600 text-sm">Fomenta decisiones compartidas en el centro, evitando el caos de la individualidad sin criterio.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-red-500 card-hover section-fade">
+                <h3 class="font-bold text-lg mb-2 text-gray-900">Privacidad Obligatoria</h3>
+                <p class="text-gray-600 text-sm">La protección de datos no es opcional. Debemos conocer la ley antes de "recomendar" aplicaciones.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 card-hover section-fade">
+                <h3 class="font-bold text-lg mb-2 text-gray-900">Foco en lo Esencial</h3>
+                <p class="text-gray-600 text-sm">Formarse en IA es aprender a pensar mejor cómo enseñar en un contexto digital nuevo.</p>
+            </div>
+        </div>
+
+        <!-- Materiales para la Acción -->
+        <h3 class="text-2xl font-bold text-gray-900 mb-6 section-fade">Materiales para la Acción</h3>
+        <div class="space-y-6 mb-16">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md flex flex-col md:flex-row border border-gray-100 card-hover section-fade">
+                <div class="md:w-1/4 bg-blue-100 flex items-center justify-center p-8">
+                    <i class="fas fa-university text-5xl text-blue-600"></i>
+                </div>
+                <div class="p-6 md:w-3/4 flex flex-col justify-center">
+                    <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                        <h4 class="text-xl font-bold text-gray-900">UNESCO: IA en Educación</h4>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">ÉTICA Y RIESGOS</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Analiza implicaciones reales y riesgos de privacidad. Ideal para entender qué decisiones debe tomar el centro antes de abrir herramientas al alumnado.</p>
+                    <a href="https://www.unesco.org/en/digital-education/artificial-intelligence" target="_blank" class="inline-flex items-center text-blue-600 font-semibold hover:underline w-fit">
+                        Explorar recurso <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md flex flex-col md:flex-row border border-gray-100 card-hover section-fade">
+                <div class="md:w-1/4 bg-red-50 flex items-center justify-center p-8">
+                    <i class="fas fa-graduation-cap text-5xl text-red-600"></i>
+                </div>
+                <div class="p-6 md:w-3/4 flex flex-col justify-center">
+                    <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                        <h4 class="text-xl font-bold text-gray-900">Guía Stanford: Programación y Evaluación</h4>
+                        <span class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full">UTILIDAD REAL</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Preguntas clave: "¿Esta actividad sigue teniendo sentido?". Ayuda a aterrizar la IA en el diseño instruccional diario.</p>
+                    <a href="https://teachingcommons.stanford.edu/teaching-guides/artificial-intelligence-teaching-guide" target="_blank" class="inline-flex items-center text-blue-600 font-semibold hover:underline w-fit">
+                        Explorar recurso <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md flex flex-col md:flex-row border border-gray-100 card-hover section-fade">
+                <div class="md:w-1/4 bg-orange-50 flex items-center justify-center p-8">
+                    <i class="fas fa-tools text-5xl text-orange-600"></i>
+                </div>
+                <div class="p-6 md:w-3/4 flex flex-col justify-center">
+                    <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                        <h4 class="text-xl font-bold text-gray-900">Toolkit de TeachAI</h4>
+                        <span class="bg-orange-100 text-orange-800 text-xs font-bold px-3 py-1 rounded-full">POLÍTICA DE CENTRO</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Evita el caos de "cada uno hace lo que quiere". Ayuda a definir políticas de uso y protección de datos coherentes con el contexto real.</p>
+                    <a href="https://www.teachai.org/toolkit" target="_blank" class="inline-flex items-center text-blue-600 font-semibold hover:underline w-fit">
+                        Explorar recurso <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recursos para continuar aprendiendo -->
+        <h3 class="text-2xl font-bold text-gray-900 mb-2 section-fade">Recursos para continuar aprendiendo</h3>
+        <p class="text-gray-600 mb-6 section-fade">Selección de portales, guías oficiales y comunidades docentes para seguir formándose.</p>
+        <div class="space-y-6">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md flex flex-col md:flex-row border border-gray-100 card-hover section-fade">
+                <div class="md:w-1/4 bg-blue-700 flex items-center justify-center p-8">
+                    <i class="fas fa-chalkboard-teacher text-5xl text-white/80"></i>
+                </div>
+                <div class="p-6 md:w-3/4 flex flex-col justify-center">
+                    <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                        <h4 class="text-xl font-bold text-gray-900">Web de recursos para el profesorado</h4>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">ELABORACIÓN PROPIA</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Portal con herramientas, GPTs educativos y materiales formativos desarrollados durante el proyecto de licencia por estudios 2024/2025.</p>
+                    <a href="https://luisgeria.github.io/Formacion-IA-para-el-profesorado/" target="_blank" class="inline-flex items-center text-blue-600 font-semibold hover:underline w-fit">
+                        Acceder al portal <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md flex flex-col md:flex-row border border-gray-100 card-hover section-fade">
+                <div class="md:w-1/4 bg-red-700 flex items-center justify-center p-8">
+                    <i class="fas fa-landmark text-5xl text-white/80"></i>
+                </div>
+                <div class="p-6 md:w-3/4 flex flex-col justify-center">
+                    <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                        <h4 class="text-xl font-bold text-gray-900">Guías oficiales sobre IA y educación</h4>
+                        <span class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full">AESIA — OFICIAL</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Agencia Española de Supervisión de la IA. Guías para el uso responsable de la IA en distintos ámbitos, incluido el educativo.</p>
+                    <a href="https://aesia.digital.gob.es/es/guias" target="_blank" class="inline-flex items-center text-blue-600 font-semibold hover:underline w-fit">
+                        Ver guías <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md flex flex-col md:flex-row border border-gray-100 card-hover section-fade">
+                <div class="md:w-1/4 bg-sky-500 flex items-center justify-center p-8">
+                    <i class="fab fa-telegram-plane text-5xl text-white/90"></i>
+                </div>
+                <div class="p-6 md:w-3/4 flex flex-col justify-center">
+                    <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                        <h4 class="text-xl font-bold text-gray-900">ChatGPT y educación</h4>
+                        <span class="bg-sky-100 text-sky-800 text-xs font-bold px-3 py-1 rounded-full">COMUNIDAD TELEGRAM</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Canal de Telegram activo con recursos, experiencias y novedades sobre el uso de IA generativa en el aula.</p>
+                    <a href="https://t.me/ChatGPTedu" target="_blank" class="inline-flex items-center text-blue-600 font-semibold hover:underline w-fit">
+                        Unirse al canal <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md flex flex-col md:flex-row border border-gray-100 card-hover section-fade">
+                <div class="md:w-1/4 bg-sky-400 flex items-center justify-center p-8">
+                    <i class="fab fa-telegram-plane text-5xl text-white/90"></i>
+                </div>
+                <div class="p-6 md:w-3/4 flex flex-col justify-center">
+                    <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                        <h4 class="text-xl font-bold text-gray-900">Vceduca</h4>
+                        <span class="bg-sky-100 text-sky-800 text-xs font-bold px-3 py-1 rounded-full">COMUNIDAD TELEGRAM</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Comunidad docente para la continuidad en la formación sobre tecnología educativa e inteligencia artificial.</p>
+                    <span class="inline-flex items-center text-gray-400 text-sm italic">
+                        <i class="fas fa-clock mr-2"></i> Enlace próximamente disponible
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cita Final -->
+        <div class="mt-12 bg-primary text-white p-10 rounded-3xl text-center shadow-xl section-fade">
+            <h3 class="text-2xl font-bold mb-4">Menos "demos" y más decisiones pedagógicas</h3>
+            <p class="text-blue-200 max-w-3xl mx-auto italic text-lg mb-6">
+                "La formación docente no debe ser una "feria de muestras" de herramientas más o menos espectaculares. Debemos de entender qué es la IA y saber qué podemos hacer en el aula, respetando al máximo la protección de datos de nuestro alumnado."
+            </p>
+            <div class="flex justify-center items-center text-blue-300 text-sm">
+                <i class="fas fa-shield-alt mr-2"></i> Cumplimiento RGPD/Privacidad como eje transversal
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RECURSOS -->
+<section id="recursos" class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-16 section-fade">
+        <span class="text-primary font-semibold tracking-wider uppercase text-sm">Repositorio Completo</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Centro de Recursos IA</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Toda la formación, investigación y materiales desarrollados durante el proyecto de licencia por estudios 2024/2025.
+        </p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-fade border border-gray-100">
+            <div class="h-48 bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
+                <i class="fas fa-file-alt text-6xl text-white/80"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Proyecto: Integración de la IA en Educación</h3>
+                <p class="text-gray-600 text-sm mb-4">Memoria final del proyecto 2024/2025. Análisis, aplicación y evaluación del uso educativo de herramientas de IA desde una perspectiva ética, pedagógica y tecnológica.</p>
+                <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                    <li><i class="fas fa-check text-green-500 mr-1"></i> Diseño de asistentes personalizados</li>
+                    <li><i class="fas fa-check text-green-500 mr-1"></i> Formación del profesorado</li>
+                    <li><i class="fas fa-check text-green-500 mr-1"></i> Experimentación en aula real</li>
+                </ul>
+                <a href="https://luisgeria.github.io/Integracion-de-la-Inteligencia-Artificial-en-la-Educacion/" target="_blank" class="inline-flex items-center text-primary font-semibold hover:underline">
+                    Ver documento completo <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-fade border border-gray-100">
+            <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                <i class="fas fa-users-cog text-6xl text-white/80"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Formación IA para el Profesorado</h3>
+                <p class="text-gray-600 text-sm mb-4">Portal de acceso a todas las herramientas, GPTs educativos y recursos formativos. Incluye vídeo introductorio de Eduardo Sáez de Cabezón.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Herramientas</span>
+                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">GPTs</span>
+                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Vídeos</span>
+                </div>
+                <a href="https://luisgeria.github.io/Formacion-IA-para-el-profesorado/" target="_blank" class="inline-flex items-center text-primary font-semibold hover:underline">
+                    Acceder al portal <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-fade border border-gray-100">
+            <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                <i class="fas fa-brain text-6xl text-white/80"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-gray-900">IA en la Educación: Análisis Profundo</h3>
+                <p class="text-gray-600 text-sm mb-4">Análisis de tendencias, herramientas, competencias y el marco ético-legal. Incluye el Marco de Competencias UNESCO para Docentes en IA.</p>
+                <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                    <li><i class="fas fa-chart-line text-orange-500 mr-1"></i> Tendencias emergentes</li>
+                    <li><i class="fas fa-balance-scale text-orange-500 mr-1"></i> Marco legal UE (Ley de IA)</li>
+                    <li><i class="fas fa-graduation-cap text-orange-500 mr-1"></i> Competencias docentes</li>
+                </ul>
+                <a href="https://luisgeria.github.io/IA-en-la-Educacion-Transformando-la-formacion-docente/" target="_blank" class="inline-flex items-center text-primary font-semibold hover:underline">
+                    Leer análisis <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-fade border border-gray-100">
+            <div class="h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                <i class="fab fa-google-drive text-6xl text-white/80"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Repositorio Completo en Google Drive</h3>
+                <p class="text-gray-600 text-sm mb-4">Acceso a todos los materiales, documentos, recursos y archivos del proyecto organizados en Drive. Carpeta de elaboración propia.</p>
+                <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                    <li><i class="fas fa-folder-open text-green-500 mr-1"></i> Documentos y memorias</li>
+                    <li><i class="fas fa-folder-open text-green-500 mr-1"></i> Materiales formativos</li>
+                    <li><i class="fas fa-folder-open text-green-500 mr-1"></i> Recursos para el aula</li>
+                </ul>
+                <a href="https://drive.google.com/drive/folders/1lFyoSGwqqTUYNMeNAZS8W4TQr_KZMdTO" target="_blank" class="inline-flex items-center text-primary font-semibold hover:underline">
+                    Abrir en Drive <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HERRAMIENTAS -->
+<section id="herramientas" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 section-fade">
+            <span class="text-primary font-semibold tracking-wider uppercase text-sm">Caja de Herramientas</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">GPTs y Recursos Prácticos</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Asistentes de IA personalizados para tareas docentes específicas, diseñados con propósitos educativos claros y directrices éticas.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md card-hover section-fade border-t-4 border-blue-500">
+                <i class="fas fa-book-open text-3xl text-blue-500 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Programaciones Didácticas</h3>
+                <p class="text-sm text-gray-600 mb-4">Elaboración de programaciones y unidades didácticas adaptadas a la LOMLOE.</p>
+                <div class="space-y-2">
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Programaciones Primaria</a>
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Oposiciones Maestros JCyL</a>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md card-hover section-fade border-t-4 border-green-500">
+                <i class="fas fa-clipboard-check text-3xl text-green-500 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Evaluación y Rúbricas</h3>
+                <p class="text-sm text-gray-600 mb-4">Herramientas para la evaluación por competencias y diseño de rúbricas.</p>
+                <div class="space-y-2">
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Evaluador por Competencias</a>
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Rúbricas Primaria JCyL</a>
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Comentarios Boletines</a>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md card-hover section-fade border-t-4 border-purple-500">
+                <i class="fas fa-calculator text-3xl text-purple-500 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Por Asignaturas</h3>
+                <p class="text-sm text-gray-600 mb-4">Asistentes especializados en diferentes áreas y materias.</p>
+                <div class="space-y-2">
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Matemáticas ESO</a>
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Lengua / Literatura</a>
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Ciencias Naturales</a>
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Inglés / Francés</a>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md card-hover section-fade border-t-4 border-pink-500">
+                <i class="fas fa-lightbulb text-3xl text-pink-500 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Creatividad y Producción</h3>
+                <p class="text-sm text-gray-600 mb-4">Herramientas para crear contenido educativo y fomentar la lectura.</p>
+                <div class="space-y-2">
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Creador de Podcasts</a>
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Aventuras Literarias</a>
+                    <a href="#" class="block text-sm text-primary hover:underline"><i class="fas fa-robot mr-2"></i>Creador de Prompts</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 text-center section-fade">
+            <a href="https://luisgeria.github.io/mis-gpt-personalizados/" target="_blank" class="inline-flex items-center bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-800 transition shadow-lg">
+                <i class="fas fa-external-link-alt mr-2"></i>Ver todos los GPTs (20+ disponibles)
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- APPS -->
+<section id="apps" class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-16 section-fade">
+        <span class="text-primary font-semibold tracking-wider uppercase text-sm">Vibe Coding Educativo</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Apps Educativas Interactivas</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Aplicaciones y juegos interactivos diseñados con tecnología Vibe Coding para apoyar el aprendizaje de manera lúdica y efectiva.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-fade group">
+            <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <i class="fas fa-language text-6xl text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">App Lengua</h3>
+                <p class="text-gray-600 text-sm mb-4">Aplicación interactiva para mejorar habilidades lingüísticas en primaria, desde gramática hasta comprensión lectora.</p>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Primaria</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-fade group">
+            <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <i class="fas fa-calculator text-6xl text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Cálculo Mental</h3>
+                <p class="text-gray-600 text-sm mb-4">Juego divertido para practicar y agilizar el cálculo mental con diferentes niveles de dificultad.</p>
+                <span class="inline-block bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Matemáticas</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-fade group">
+            <div class="h-48 bg-gradient-to-br from-orange-400 to-red-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <i class="fas fa-running text-6xl text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Educación Física</h3>
+                <p class="text-gray-600 text-sm mb-4">Herramientas y juegos interactivos para el diseño y dinamización de actividades de EF.</p>
+                <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full">EF</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-fade group">
+            <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <i class="fas fa-balance-scale text-6xl text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Ética e IA</h3>
+                <p class="text-gray-600 text-sm mb-4">Explora conceptos básicos de ética y cómo la IA impacta nuestro día a día, adaptado para jóvenes.</p>
+                <span class="inline-block bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Valores</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-fade group">
+            <div class="h-48 bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <i class="fas fa-gamepad text-6xl text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Juegos Educativos</h3>
+                <p class="text-gray-600 text-sm mb-4">Colección de juegos educativos sencillos, ideales para aprender mientras te diviertes.</p>
+                <span class="inline-block bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">Gamificación</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-fade group">
+            <div class="h-48 bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <i class="fas fa-sort-numeric-up text-6xl text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Números y Operaciones</h3>
+                <p class="text-gray-600 text-sm mb-4">Aplicación para aprender y reforzar el conocimiento de los números y conceptos matemáticos básicos.</p>
+                <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Inicial</span>
+            </div>
+        </div>
+    </div>
+    <div class="mt-12 text-center section-fade">
+        <a href="https://luisgeria.github.io/App-vibe-coding/" target="_blank" class="inline-flex items-center bg-gray-800 text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-900 transition shadow-lg">
+            <i class="fas fa-code mr-2"></i>Explorar todas las Apps y versiones
+        </a>
+    </div>
+</section>
+
+<!-- PRESENTACIONES -->
+<section id="presentaciones" class="py-20 bg-primary text-white">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16 section-fade">
+            <span class="text-blue-200 font-semibold tracking-wider uppercase text-sm">Material Formativo</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Presentaciones y Formaciones</h2>
+            <p class="text-xl text-blue-100 max-w-2xl mx-auto">Accede a las presentaciones utilizadas en las formaciones para docentes.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 section-fade">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <div class="bg-gradient-to-br from-pink-500 to-orange-400 rounded-2xl p-8 flex items-center justify-center h-64 shadow-2xl">
+                        <i class="fas fa-chalkboard text-8xl text-white/80"></i>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Presentación Canva: Formación Docente</h3>
+                    <p class="text-blue-100 mb-6 text-lg">Presentación completa utilizada en las formaciones sobre IA aplicada a la educación. Incluye casos prácticos, reflexiones pedagógicas y guías de uso ético.</p>
+                    <ul class="space-y-3 mb-8 text-blue-100">
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-400"></i> Fundamentos de IA en educación</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-400"></i> Herramientas prácticas para el aula</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-400"></i> Marco ético y legal (RGPD)</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-400"></i> Casos de uso real</li>
+                    </ul>
+                    <a href="https://xn--iniciacin-prctica-a-la-ia-en-educacin-x9c11e3a.my.canva.site/" target="_blank" class="inline-flex items-center bg-white text-primary px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">
+                        <i class="fas fa-external-link-alt mr-2"></i>Ver Presentación en Canva
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+            <a href="https://www.youtube.com/@IAprendizaje_tv" target="_blank" class="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 section-fade hover:bg-white/10 transition-all duration-300 group" style="text-decoration:none;">
+                <i class="fab fa-youtube text-3xl text-red-400 mb-4 group-hover:scale-110 transition-transform duration-300 block"></i>
+                <h4 class="font-bold text-lg mb-2 text-white">IAprendizaje TV</h4>
+                <p class="text-sm text-blue-200 mb-3">Canal de YouTube con vídeos didácticos, tutoriales, entrevistas y formaciones grabadas.</p>
+                <span class="text-xs text-blue-300 inline-flex items-center gap-1">Ver canal <i class="fas fa-external-link-alt text-xs"></i></span>
+            </a>
+            <a href="https://www.ivoox.com/podcast-radio-iaprendizaje_sq_f12478420_1.html" target="_blank" class="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 section-fade hover:bg-white/10 transition-all duration-300 group" style="text-decoration:none;">
+                <i class="fas fa-podcast text-3xl text-purple-300 mb-4 group-hover:scale-110 transition-transform duration-300 block"></i>
+                <h4 class="font-bold text-lg mb-2 text-white">Radio IAprendizaje</h4>
+                <p class="text-sm text-blue-200 mb-3">Podcast educativo con reflexiones sobre IA, docencia y ética educativa.</p>
+                <span class="text-xs text-blue-300 inline-flex items-center gap-1">Escuchar en iVoox <i class="fas fa-external-link-alt text-xs"></i></span>
+            </a>
+            <a href="https://educacioncriticaia.blogspot.com/" target="_blank" class="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 section-fade hover:bg-white/10 transition-all duration-300 group" style="text-decoration:none;">
+                <i class="fas fa-pen-nib text-3xl text-green-300 mb-4 group-hover:scale-110 transition-transform duration-300 block"></i>
+                <h4 class="font-bold text-lg mb-2 text-white">Blog Educación Crítica IA</h4>
+                <p class="text-sm text-blue-200 mb-3">Artículos de análisis y divulgación crítica sobre IA en la escuela.</p>
+                <span class="text-xs text-blue-300 inline-flex items-center gap-1">Leer blog <i class="fas fa-external-link-alt text-xs"></i></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="py-20 bg-gray-100">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center mb-12 section-fade">
+            <span class="text-primary font-semibold tracking-wider uppercase text-sm">Ponte en Contacto</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">¿Hablamos?</h2>
+            <p class="text-gray-600 max-w-xl mx-auto">Para propuestas de formación, colaboraciones o cualquier consulta sobre el proyecto.</p>
+        </div>
+        <div class="grid md:grid-cols-5 gap-8">
+            <!-- Info -->
+            <div class="md:col-span-2 flex flex-col gap-4 section-fade">
+                <a href="/cdn-cgi/l/email-protection#d4b8a1bda7b3b1a6bdb5fabdb594b3b9b5bdb8fab7bbb9" class="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 card-hover border border-gray-100" style="text-decoration:none;">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-envelope text-xl text-blue-600"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Correo electrónico</p>
+                        <p class="font-semibold text-gray-900"><span class="__cf_email__" data-cfemail="365a435f455153445f57185f5776515b575f5a1855595b">[email&#160;protected]</span></p>
+                    </div>
+                </a>
+                <a href="https://github.com/luisgeria" target="_blank" class="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 card-hover border border-gray-100" style="text-decoration:none;">
+                    <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fab fa-github text-xl text-gray-800"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">GitHub</p>
+                        <p class="font-semibold text-gray-900">luisgeria</p>
+                    </div>
+                </a>
+                <div class="bg-white rounded-2xl shadow-md p-5 border border-gray-100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-award text-amber-600"></i>
+                        </div>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Sobre el Proyecto</p>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">Desarrollado por <strong class="text-gray-800">Luis Ángel González Ortega</strong> durante la licencia por estudios 2024/2025, con el respaldo de la Junta de Castilla y León.</p>
+                </div>
+            </div>
+            <!-- Formulario -->
+            <div class="md:col-span-3 section-fade">
+                <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">Envíame un mensaje</h3>
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Nombre *</label>
+                                <input type="text" id="f-name" placeholder="Tu nombre" required
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Centro / Organización</label>
+                                <input type="text" id="f-org" placeholder="Opcional"
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Email *</label>
+                            <input type="email" id="f-email" placeholder="tu@email.com" required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Motivo</label>
+                            <select id="f-motivo" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-gray-700">
+                                <option value="">Selecciona una opción</option>
+                                <option value="Solicitar formación">Solicitar formación</option>
+                                <option value="Propuesta de colaboración">Propuesta de colaboración</option>
+                                <option value="Información sobre recursos">Información sobre recursos</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Mensaje *</label>
+                            <textarea id="f-msg" rows="4" placeholder="¿En qué puedo ayudarte?" required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"></textarea>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+                            <button type="submit" class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-800 transition shadow-md inline-flex items-center gap-2">
+                                <i class="fas fa-paper-plane text-sm"></i> Enviar mensaje
+                            </button>
+                            <span class="text-sm text-gray-500">O escríbeme a <a href="/cdn-cgi/l/email-protection#1b776e72687c7e69727a35727a5b7c767a727735787476" class="text-primary font-semibold hover:underline"><span class="__cf_email__" data-cfemail="6a061f03190d0f18030b44030b2a0d070b030644090507">[email&#160;protected]</span></a></span>
+                        </div>
+                    </form>
+                    <div id="form-success" class="hidden text-center py-8">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-check text-2xl text-green-600"></i>
+                        </div>
+                        <p class="text-lg font-bold text-gray-900 mb-1">¡Mensaje enviado!</p>
+                        <p class="text-gray-500 text-sm">Te responderé lo antes posible.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center section-fade">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">¿Listo para ser parte del futuro de la educación?</h2>
+        <p class="text-xl text-gray-600 mb-8">Ya seas educador, administrador escolar, estudiante o familiar, IAprendizaje tiene algo que ofrecerte.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://luisgeria.github.io/Formacion-IA-para-el-profesorado/" target="_blank" class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-800 transition shadow-lg">
+                Comenzar Formación
+            </a>
+            <a href="#contacto" class="bg-gray-200 text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-300 transition">
+                Contactar
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
+        <div class="col-span-2">
+            <div class="flex items-center space-x-2 mb-4">
+                <i class="fas fa-brain text-2xl text-blue-500"></i>
+                <span class="text-xl font-bold text-white">IAprendizaje</span>
+            </div>
+            <p class="text-sm leading-relaxed mb-4">Proyecto innovador respaldado por la Junta de Castilla y León para integrar la Inteligencia Artificial en el sistema educativo de manera holística.</p>
+            <a href="/cdn-cgi/l/email-protection#335f465a405456415a521d5a5273545e525a5f1d505c5e" class="text-blue-400 text-sm hover:text-blue-300 transition inline-flex items-center gap-2">
+                <i class="fas fa-envelope"></i> <span class="__cf_email__" data-cfemail="ff938a968c989a8d969ed1969ebf98929e9693d19c9092">[email&#160;protected]</span>
+            </a>
+            <p class="text-xs text-gray-500 mt-3">
+                © 2026 IAprendizaje.xyz — Por una IA con sentido común y respeto legal.<br>
+                Desarrollado por Luis Ángel González Ortega durante la licencia por estudios 2024/2025 y actualizado a fecha febrero 2026.
+            </p>
+        </div>
+        <div>
+            <h4 class="text-white font-semibold mb-4">Enlaces Rápidos</h4>
+            <ul class="space-y-2 text-sm">
+                <li><a href="#inicio" class="hover:text-white transition">Inicio</a></li>
+                <li><a href="#formacion" class="hover:text-white transition">Formación</a></li>
+                <li><a href="#recursos" class="hover:text-white transition">Recursos</a></li>
+                <li><a href="#herramientas" class="hover:text-white transition">Herramientas</a></li>
+                <li><a href="#apps" class="hover:text-white transition">Apps</a></li>
+                <li><a href="#contacto" class="hover:text-white transition">Contacto</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-white font-semibold mb-4">Recursos Externos</h4>
+            <ul class="space-y-2 text-sm">
+                <li><a href="https://luisgeria.github.io/Formacion-IA-para-el-profesorado/" target="_blank" class="hover:text-white transition">Portal Formación</a></li>
+                <li><a href="https://luisgeria.github.io/mis-gpt-personalizados/" target="_blank" class="hover:text-white transition">GPTs Educativos</a></li>
+                <li><a href="https://luisgeria.github.io/App-vibe-coding/" target="_blank" class="hover:text-white transition">Vibe Coding</a></li>
+                <li><a href="https://www.canva.com/design/DAG-gilaDA8/view" target="_blank" class="hover:text-white transition">Presentaciones</a></li>
+                <li><a href="https://aesia.digital.gob.es/es/guias" target="_blank" class="hover:text-white transition">Guías AESIA</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1lFyoSGwqqTUYNMeNAZS8W4TQr_KZMdTO" target="_blank" class="hover:text-white transition">Google Drive</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Animaciones — funcionan en servidor; visible por defecto en local
+    if (window.location.protocol !== 'file:') {
+        document.querySelectorAll('.section-fade').forEach(el => el.classList.add('will-animate'));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.remove('will-animate');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.section-fade').forEach(el => observer.observe(el));
+        // Visibles al cargar
+        setTimeout(() => {
+            document.querySelectorAll('.section-fade').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('visible');
+                    el.classList.remove('will-animate');
+                }
+            });
+        }, 80);
+    }
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('shadow-md', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    document.querySelectorAll('#mobile-menu a').forEach(a => {
+        a.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
+    });
+
+    // Formulario
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('f-name').value;
+        const email = document.getElementById('f-email').value;
+        const motivo = document.getElementById('f-motivo').value;
+        const msg = do
