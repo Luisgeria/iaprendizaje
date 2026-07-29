@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAprendizaje — Sistema de IA para la educación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#09090D; --surface:#111117; --surface-2:#15151D; --line:#1F1F29;
+    --ink:#EDEDF2; --muted:#9A9AAB; --muted-2:#6B6B7C;
+    --blue:#3B82F6; --amber:#F59E0B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.5;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  .eyebrow{font-family:'IBM Plex Mono';font-size:.72rem;letter-spacing:.06em;color:var(--amber);}
+  .grad{background:linear-gradient(90deg,var(--blue),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  h1,h2,h3{font-family:'Space Grotesk';font-weight:700;}
+  section{padding:72px 0;border-top:1px solid var(--line);}
+  .section-head{max-width:640px;margin-bottom:36px;}
+  .section-head .eyebrow{display:block;margin-bottom:10px;}
+  .section-head h2{font-size:1.7rem;margin-bottom:10px;}
+  .section-head p{color:var(--muted);font-size:.95rem;}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;max-width:1080px;margin:0 auto;}
+  .logo{font-family:'Space Grotesk';font-weight:600;font-size:1rem;display:flex;align-items:center;gap:8px;}
+  .logo .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 8px var(--blue);}
+  .navlinks{display:flex;gap:26px;font-size:.83rem;color:var(--muted);}
+  .navlinks a:hover{color:var(--ink);}
+  .navcta{font-size:.8rem;border:1px solid var(--line);padding:8px 16px;border-radius:7px;}
+  .navcta:hover{border-color:var(--blue);}
+  @media(max-width:760px){.navlinks{display:none;}}
+
+  /* HERO */
+  .hero{padding:80px 0 40px;}
+  .hero h1{font-size:2.6rem;line-height:1.14;margin:16px 0 18px;max-width:680px;}
+  .hero .sub{color:var(--muted);font-size:1.02rem;max-width:540px;margin-bottom:30px;}
+  .cta-row{display:flex;gap:12px;margin-bottom:44px;flex-wrap:wrap;}
+  .btn-p{background:var(--blue);color:#fff;font-weight:700;padding:12px 22px;border-radius:8px;font-size:.87rem;}
+  .btn-s{border:1px solid var(--line);color:var(--ink);padding:12px 22px;border-radius:8px;font-size:.87rem;}
+  .btn-p:hover{background:#2563EB;}
+  .btn-s:hover{border-color:var(--amber);}
+
+  .network{padding:10px 0 30px;}
+  svg{width:100%;height:auto;display:block;}
+
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .metric{padding:20px 22px;border-right:1px solid var(--line);}
+  .metric:last-child{border-right:none;}
+  .metric b{font-family:'Space Grotesk';font-size:1.5rem;display:block;}
+  .metric span{font-family:'IBM Plex Mono';font-size:.66rem;color:var(--muted-2);letter-spacing:.03em;}
+  @media(max-width:700px){.metrics{grid-template-columns:repeat(2,1fr);}.metric:nth-child(2){border-right:none;}}
+
+  /* GRIDS */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:800px){.grid3,.grid4{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.grid3,.grid4{grid-template-columns:1fr;}}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;}
+  .card .tag{font-family:'IBM Plex Mono';font-size:.65rem;color:var(--blue);display:block;margin-bottom:10px;}
+  .card h3{font-size:.98rem;font-weight:600;margin-bottom:8px;font-family:'Inter';}
+  .card p{color:var(--muted);font-size:.85rem;}
+  .card a.go{display:inline-block;margin-top:12px;font-size:.8rem;font-weight:600;color:var(--amber);}
+
+  /* Formación: evitar / objetivo */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:700px){.split{grid-template-columns:1fr;}}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;}
+  .panel h3{font-size:.9rem;font-family:'IBM Plex Mono';margin-bottom:14px;color:var(--muted);}
+  .panel ul{list-style:none;}
+  .panel li{font-size:.87rem;color:var(--ink);padding:8px 0;border-top:1px solid var(--line);}
+  .panel li:first-child{border-top:none;}
+  .panel.no li::before{content:"✕ ";color:#F87171;font-family:'IBM Plex Mono';}
+  .panel.ok li::before{content:"✓ ";color:#34D399;font-family:'IBM Plex Mono';}
+
+  /* Apps y cursos - lista */
+  .courselist{display:flex;flex-direction:column;gap:12px;}
+  .courseitem{display:flex;align-items:center;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;}
+  .courseitem .num{font-family:'Space Grotesk';font-size:1.5rem;color:var(--line);min-width:34px;}
+  .courseitem .content{flex:1;}
+  .courseitem h3{font-size:.95rem;font-family:'Inter';font-weight:600;margin-bottom:4px;}
+  .courseitem p{font-size:.83rem;color:var(--muted);margin-bottom:6px;}
+  .courseitem .meta{display:flex;gap:14px;font-size:.72rem;font-family:'IBM Plex Mono';color:var(--amber);}
+  .courseitem a.dl{white-space:nowrap;font-size:.8rem;font-weight:700;background:var(--blue);color:#fff;padding:9px 16px;border-radius:8px;}
+
+  /* Presentaciones */
+  .media-row{display:flex;flex-direction:column;gap:10px;}
+  .media-item{display:flex;justify-content:space-between;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;}
+  .media-item .l b{display:block;font-size:.9rem;}
+  .media-item .l span{font-size:.78rem;color:var(--muted);}
+  .media-item a{font-size:.78rem;font-weight:700;color:var(--blue);}
+
+  /* Contacto */
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+  @media(max-width:700px){.contact{grid-template-columns:1fr;}}
+  .contact-info b{font-size:1.1rem;display:block;margin-bottom:10px;font-family:'Space Grotesk';}
+  .contact-info p{color:var(--muted);font-size:.9rem;margin-bottom:18px;}
+  .contact-info a.mail{font-family:'IBM Plex Mono';color:var(--amber);font-size:.9rem;}
+  form{display:flex;flex-direction:column;gap:10px;}
+  input,textarea{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:11px 13px;color:var(--ink);font-family:'Inter';font-size:.85rem;}
+  textarea{resize:vertical;min-height:90px;}
+  form button{background:var(--blue);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer;}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .fine{font-size:.72rem;color:var(--muted-2);max-width:640px;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="dot"></span>IAprendizaje</div>
+    <div class="navlinks">
+      <a href="#formacion">Formación</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#cursos">Apps y cursos</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#presentaciones">Presentaciones</a>
+      <a href="https://zenodo.org/records/20212656" target="_blank" rel="noopener">Publicaciones</a>
+    </div>
+    <a class="navcta" href="#contacto">Contacto →</a>
+  </nav>
+</header>
+
+<div class="wrap hero">
+  <span class="eyebrow">SISTEMA DE IA EDUCATIVA · EN PRODUCCIÓN</span>
+  <h1>Un <span class="grad">sistema</span> de herramientas de IA, no una colección de demos</h1>
+  <p class="sub">Formación, apps, GPTs y cursos construidos y probados en aula real por un docente que también programa. Cada pieza está conectada con las demás — nada vive aislado.</p>
+  <div class="cta-row">
+    <a class="btn-p" href="#cursos">Ver Apps y cursos</a>
+    <a class="btn-s" href="#herramientas">Explorar herramientas</a>
+  </div>
+
+  <div class="network">
+    <svg viewBox="0 0 900 170" fill="none">
+      <line x1="450" y1="85" x2="150" y2="35" stroke="#1F1F29" stroke-width="1.5"/>
+      <line x1="450" y1="85" x2="750" y2="35" stroke="#1F1F29" stroke-width="1.5"/>
+      <line x1="450" y1="85" x2="150" y2="135" stroke="#1F1F29" stroke-width="1.5"/>
+      <line x1="450" y1="85" x2="750" y2="135" stroke="#1F1F29" stroke-width="1.5"/>
+      <circle cx="450" cy="85" r="10" fill="#3B82F6"/>
+      <circle cx="150" cy="35" r="6" fill="#F59E0B"/>
+      <circle cx="750" cy="35" r="6" fill="#F59E0B"/>
+      <circle cx="150" cy="135" r="6" fill="#F59E0B"/>
+      <circle cx="750" cy="135" r="6" fill="#F59E0B"/>
+      <text x="450" y="112" fill="#EDEDF2" font-size="11" text-anchor="middle" font-family="IBM Plex Mono">IAprendizaje</text>
+      <text x="150" y="22" fill="#9A9AAB" font-size="10" text-anchor="middle" font-family="IBM Plex Mono">Formación</text>
+      <text x="750" y="22" fill="#9A9AAB" font-size="10" text-anchor="middle" font-family="IBM Plex Mono">GPTs</text>
+      <text x="150" y="155" fill="#9A9AAB" font-size="10" text-anchor="middle" font-family="IBM Plex Mono">Apps</text>
+      <text x="750" y="155" fill="#9A9AAB" font-size="10" text-anchor="middle" font-family="IBM Plex Mono">Cursos</text>
+    </svg>
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><b>20+</b><span>GPTS DESPLEGADOS</span></div>
+    <div class="metric"><b>12</b><span>APPS EN PRODUCCIÓN</span></div>
+    <div class="metric"><b>3</b><span>ÁREAS DE ACCIÓN</span></div>
+    <div class="metric"><b>100%</b><span>RGPD COMPLIANT</span></div>
+  </div>
+</div>
+
+<!-- QUÉ ES -->
+<section id="inicio">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">EL SISTEMA</span>
+      <h2>Tres capas, un mismo proyecto</h2>
+      <p>IAprendizaje no es una charla sobre IA: es infraestructura que un centro puede usar mañana por la mañana.</p>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <span class="tag">01 · GESTIÓN</span>
+        <h3>Optimización administrativa</h3>
+        <p>Apps que agilizan procesos reales del centro: reservas, registros, paneles de control.</p>
+      </div>
+      <div class="card">
+        <span class="tag">02 · DOCENCIA</span>
+        <h3>Apoyo al profesorado</h3>
+        <p>GPTs y herramientas para planificar clases y crear materiales sin perder horas.</p>
+      </div>
+      <div class="card">
+        <span class="tag">03 · AULA</span>
+        <h3>Educación en IA</h3>
+        <p>Conceptos fundamentales de IA llevados al alumnado, con criterio y sin humo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMACIÓN -->
+<section id="formacion">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">FORMACIÓN DOCENTE</span>
+      <h2>Del "show" a la utilidad real</h2>
+      <p>La formación en IA repite un fallo conocido: mucha demo espectacular, poca utilidad en el aula. Aquí se prioriza lo contrario.</p>
+    </div>
+    <div class="split">
+      <div class="panel no">
+        <h3>// qué evitamos</h3>
+        <ul>
+          <li>Sesiones que parecen un show tecnológico sin aterrizaje</li>
+          <li>Herramientas que no afectan a tu programación real</li>
+          <li>Desconocimiento de los marcos legales de privacidad</li>
+        </ul>
+      </div>
+      <div class="panel ok">
+        <h3>// qué buscamos</h3>
+        <ul>
+          <li>Entender qué es la IA y cómo afecta a la evaluación</li>
+          <li>Saber exactamente qué permite hacer en el aula</li>
+          <li>Proteger la integridad y los datos del alumnado por encima de todo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECURSOS -->
+<section id="recursos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">CENTRO DE RECURSOS</span>
+      <h2>Materiales para la acción</h2>
+      <p>Investigación, memoria de proyecto y guías aplicadas — no artículos genéricos sobre IA.</p>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <span class="tag">ÉTICA Y RIESGOS</span>
+        <h3>UNESCO: IA en Educación</h3>
+        <p>Implicaciones reales y riesgos de privacidad antes de abrir herramientas al alumnado.</p>
+        <a class="go" href="https://www.unesco.org/en/digital-education/artificial-intelligence">Explorar recurso →</a>
+      </div>
+      <div class="card">
+        <span class="tag">UTILIDAD REAL</span>
+        <h3>Guía Stanford</h3>
+        <p>Programación y evaluación: ¿esta actividad sigue teniendo sentido con IA de por medio?</p>
+        <a class="go" href="https://teachingcommons.stanford.edu/teaching-guides/artificial-intelligence-teaching-guide">Explorar recurso →</a>
+      </div>
+      <div class="card">
+        <span class="tag">POLÍTICA DE CENTRO</span>
+        <h3>Toolkit de TeachAI</h3>
+        <p>Define políticas de uso y protección de datos coherentes, sin el caos del "cada uno hace lo que quiere".</p>
+        <a class="go" href="https://www.teachai.org/toolkit">Explorar recurso →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPS Y CURSOS -->
+<section id="cursos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Apps y cursos</h2>
+      <p>Aplicaciones en producción y mini-cursos online — el sistema en uso, no en teoría.</p>
+    </div>
+
+    <h3 style="font-family:'IBM Plex Mono';font-size:.78rem;color:var(--muted);margin-bottom:14px;">// APPS EN PRODUCCIÓN (18)</h3>
+    <div class="grid4" style="margin-bottom:48px;">
+      <div class="card"><span class="tag">APP</span><h3>Resolución de Problemas</h3><p>Curso online para desarrollar estrategias de resolución de problemas aplicadas al aula. Con ejercicios prácticos paso a paso.</p><a class="go" href="https://resoluci-n-de-problemas.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Mecanografía</h3><p>Entrena la velocidad y precisión de escritura con ejercicios progresivos. Pensada para practicar mecanografía en el aula o en casa.</p><a class="go" href="https://mecanografia-chi.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Análisis de Reputación</h3><p>Analiza la reputación digital de una marca o perfil a partir de fuentes abiertas. Pensada para tareas de investigación y OSINT aplicado.</p><a class="go" href="https://analisis-de-reputacion.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Plantillas de Competencias Clave</h3><p>Genera y organiza plantillas alineadas con las competencias clave del currículo. Agiliza la programación docente.</p><a class="go" href="https://plantillas-de-competencias-clave.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Carrera Solidaria</h3><p>Gestiona inscripciones, dorsales y resultados de una carrera solidaria escolar. Pensada para eventos deportivos del centro.</p><a class="go" href="https://carrera-solidaria.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>DocenFicha</h3><p>Crea fichas docentes rápidas y organizadas por alumno o grupo. Centraliza observaciones y seguimiento.</p><a class="go" href="https://docenficha.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Docu CyL</h3><p>Genera documentación oficial adaptada a la normativa de Castilla y León. Ahorra tiempo en trámites administrativos.</p><a class="go" href="https://docu-cy-l.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>EduAgent</h3><p>Asistente de IA que resuelve dudas educativas y ayuda en tareas docentes del día a día. Funciona como agente conversacional.</p><a class="go" href="https://edu-agent-lac.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Scriptorium</h3><p>Editor de textos con asistencia de IA para redactar y revisar documentos. Pensado para producción de contenido escrito.</p><a class="go" href="https://scriptorium-roan.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Notas JCyL</h3><p>Consulta y organiza calificaciones siguiendo el formato de la Junta de Castilla y León. Simplifica el seguimiento de notas.</p><a class="go" href="https://iaprendizaje-notas-jcyl.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Agente de Inteligencia Estratégica</h3><p>Asistente de IA orientado al análisis estratégico de información. Apoya la toma de decisiones basada en datos.</p><a class="go" href="https://agente-inteligencia-estrategica.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>El Club de las Historias</h3><p>Club de lectura gamificado con sistema de créditos y foro de debate. Fomenta el hábito lector del alumnado.</p><a class="go" href="https://el-club-de-las-historias.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Gymkana</h3><p>Organiza pruebas y puntuaciones de una gymkana educativa. Pensada para actividades de dinamización en el centro.</p><a class="go" href="https://gymkana-three.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>StudyFlow</h3><p>Planificador de estudio con seguimiento de tareas y tiempo. Ayuda al alumnado a organizar su rutina de trabajo.</p><a class="go" href="https://study-flow-sooty.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Gestor de Tareas</h3><p>Gestiona tareas y pendientes de forma sencilla, individual o por equipos. Pensado para organización docente o de aula.</p><a class="go" href="https://gestor-de-tareas-psi.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Eclipse Edu</h3><p>Plataforma educativa para actividades y contenidos interactivos. Pensada para dinamizar sesiones en el aula.</p><a class="go" href="https://eclipse-edu.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Reserva de Portátiles</h3><p>Gestiona la reserva y disponibilidad de los portátiles del centro. Evita solapamientos entre docentes.</p><a class="go" href="https://app-para-reserva-de-portatiles.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Reserva de Aula Informática</h3><p>Gestiona la reserva y disponibilidad del aula de informática en tiempo real. Sincronizada entre dispositivos.</p><a class="go" href="https://app-para-reserva-de-aula-informatic.vercel.app/">Abrir →</a></div>
+      <div class="card"><span class="tag">APP</span><h3>Mosaico Visoespacial</h3><p>Actividades de estimulación visoespacial mediante mosaicos y patrones. Pensada para trabajar percepción y atención.</p><a class="go" href="https://mosaico-visoespacial.vercel.app/">Abrir →</a></div>
+    </div>
+
+    <h3 style="font-family:'IBM Plex Mono';font-size:.78rem;color:var(--muted);margin-bottom:14px;">// CURSOS ONLINE (8)</h3>
+    <div class="courselist">
+      <div class="courseitem">
+        <div class="num">01</div>
+        <div class="content">
+          <h3>Resolución de Problemas</h3>
+          <p>Curso online para desarrollar estrategias de resolución de problemas aplicadas al aula. Con ejercicios prácticos paso a paso.</p>
+          <div class="meta"><span>🎯 NIVEL: POR DEFINIR</span><span>⏱ DURACIÓN: POR DEFINIR</span></div>
+        </div>
+        <a class="dl" href="https://resoluci-n-de-problemas.vercel.app/">Acceder</a>
+      </div>
+      <div class="courseitem">
+        <div class="num">02</div>
+        <div class="content">
+          <h3>Storytelling y Comunicación Narrativa</h3>
+          <p>Curso online sobre técnicas de storytelling para comunicar ideas con más impacto. Aplicable a la docencia y a la comunicación personal.</p>
+          <div class="meta"><span>🎯 NIVEL: POR DEFINIR</span><span>⏱ DURACIÓN: POR DEFINIR</span></div>
+        </div>
+        <a class="dl" href="https://storytelling-y-comunicaci-n-narrati.vercel.app/">Acceder</a>
+      </div>
+      <div class="courseitem">
+        <div class="num">03</div>
+        <div class="content">
+          <h3>Psicología en el Deporte</h3>
+          <p>Curso online que introduce los fundamentos de la psicología aplicada al deporte. Útil para docentes y entrenadores.</p>
+          <div class="meta"><span>🎯 NIVEL: POR DEFINIR</span><span>⏱ DURACIÓN: POR DEFINIR</span></div>
+        </div>
+        <a class="dl" href="https://psicologia-en-el-deporte.vercel.app/">Acceder</a>
+      </div>
+      <div class="courseitem">
+        <div class="num">04</div>
+        <div class="content">
+          <h3>Altas Capacidades (AACC)</h3>
+          <p>Curso online de iniciación a la detección y atención de alumnado con altas capacidades. Enfoque práctico para el aula.</p>
+          <div class="meta"><span>🎯 NIVEL: POR DEFINIR</span><span>⏱ DURACIÓN: POR DEFINIR</span></div>
+        </div>
+        <a class="dl" href="https://curso-aacc.vercel.app/">Acceder</a>
+      </div>
+      <div class="courseitem">
+        <div class="num">05</div>
+        <div class="content">
+          <h3>Neuropsicología</h3>
+          <p>Curso online que introduce los fundamentos de la neuropsicología aplicada al aprendizaje. Pensado para docentes sin formación previa.</p>
+          <div class="meta"><span>🎯 NIVEL: POR DEFINIR</span><span>⏱ DURACIÓN: POR DEFINIR</span></div>
+        </div>
+        <a class="dl" href="https://curso-neuropsicologia.vercel.app/">Acceder</a>
+      </div>
+      <div class="courseitem">
+        <div class="num">06</div>
+        <div class="content">
+          <h3>OSINT: Inteligencia de Fuentes Abiertas</h3>
+          <p>Curso online de iniciación al OSINT: cómo buscar y verificar información en fuentes abiertas. Con ejemplos prácticos.</p>
+          <div class="meta"><span>🎯 NIVEL: POR DEFINIR</span><span>⏱ DURACIÓN: POR DEFINIR</span></div>
+        </div>
+        <a class="dl" href="https://curso-osint-chi.vercel.app/">Acceder</a>
+      </div>
+      <div class="courseitem">
+        <div class="num">07</div>
+        <div class="content">
+          <h3>Animación a la Lectura</h3>
+          <p>Curso de autoformación para iniciarse en dinámicas de animación a la lectura. Ideas y recursos prácticos para fomentar el hábito lector.</p>
+          <div class="meta"><span>🎯 INICIACIÓN · AUTOFORMACIÓN</span><span>⏱ DURACIÓN: POR DEFINIR</span></div>
+        </div>
+        <a class="dl" href="https://animacion-a-la-lectura.vercel.app/">Acceder</a>
+      </div>
+      <div class="courseitem">
+        <div class="num">08</div>
+        <div class="content">
+          <h3>Atención Temprana</h3>
+          <p>Curso de autoformación para iniciarse en atención temprana, del desarrollo infantil a la intervención temprana.</p>
+          <div class="meta"><span>🎯 INICIACIÓN · AUTOFORMACIÓN</span><span>⏱ DURACIÓN: POR DEFINIR</span></div>
+        </div>
+        <a class="dl" href="https://atencion-temprana.vercel.app/">Acceder</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HERRAMIENTAS -->
+<section id="herramientas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">CAJA DE HERRAMIENTAS</span>
+      <h2>GPTs para tareas docentes específicas</h2>
+      <p>Asistentes con propósito claro y directrices éticas — no un chatbot genérico.</p>
+    </div>
+
+    <h3 style="font-family:'IBM Plex Mono';font-size:.78rem;color:var(--muted);margin-bottom:14px;">// SITUACIONES DE APRENDIZAJE POR ÁREA (10)</h3>
+    <div class="grid4" style="margin-bottom:40px;">
+      <div class="card"><span class="tag">MATEMÁTICAS</span><h3>Profe de Mate ESO</h3><p>Explica conceptos, resuelve ejercicios y ayuda a preparar clases de matemáticas para la ESO.</p><a class="go" href="https://chatgpt.com/g/g-67d9641770cc8191a2ee15207fca1fea-profe-de-mate-eso-explicaciones-ejercicios-y-mas">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">MATEMÁTICAS</span><h3>Situaciones de Aprendizaje Matemáticas</h3><p>Crea situaciones de aprendizaje de Matemáticas adaptadas a Primaria bajo normativa LOMLOE.</p><a class="go" href="https://chatgpt.com/g/g-67936730c3048191856e6e93add73590-situaciones-de-aprendizaje-matematicas-primaria">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">LENGUA</span><h3>Situaciones de Aprendizaje Lengua</h3><p>Crea situaciones de aprendizaje de Lengua adaptadas a Primaria bajo normativa LOMLOE.</p><a class="go" href="https://chatgpt.com/g/g-67935bbee3b48191941e3868e567d4ab-situaciones-de-aprendizaje-lengua-primaria-jcyl">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">INGLÉS</span><h3>Situaciones de Aprendizaje Inglés</h3><p>Crea situaciones de aprendizaje en inglés según normativa LOMLOE y legislación de Castilla y León.</p><a class="go" href="https://chatgpt.com/g/g-67ae24b7d2f88191904c02e831b946f5-situaciones-de-aprendizaje-ingles-primaria-jcyl">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">FRANCÉS</span><h3>Situaciones de Aprendizaje Francés</h3><p>Crea situaciones de aprendizaje en francés según normativa LOMLOE y legislación de Castilla y León.</p><a class="go" href="https://chatgpt.com/g/g-67b724e73e248191af219a6064829fb8-situaciones-de-aprendizaje-frances-primaria-jcyl">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">CC. NATURALES</span><h3>Situaciones de Aprendizaje CC. Naturales</h3><p>Crea situaciones de aprendizaje de Ciencias Naturales adaptadas a Primaria bajo normativa LOMLOE.</p><a class="go" href="https://chatgpt.com/g/g-679ca76fa8608191ba6cf61ae6ba06cd-situaciones-de-aprendizaje-cc-naturales-primaria">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">CC. SOCIALES</span><h3>Situaciones de Aprendizaje CC. Sociales</h3><p>Crea situaciones de aprendizaje de Ciencias Sociales adaptadas a Primaria bajo normativa LOMLOE.</p><a class="go" href="https://chatgpt.com/g/g-679cba0dd6508191be743a199da1529a-situaciones-de-aprendizaje-cc-sociales-primaria">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">EDUCACIÓN FÍSICA</span><h3>Situaciones de Aprendizaje E.F.</h3><p>Crea situaciones de aprendizaje de Educación Física adaptadas a Primaria bajo normativa LOMLOE.</p><a class="go" href="https://chatgpt.com/g/g-6793d4a5dc0c8191973f5d56b0508df6-situaciones-de-aprendizaje-e-f-primaria-jcyl">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">MÚSICA</span><h3>Situaciones de Aprendizaje Música</h3><p>Crea situaciones de aprendizaje de Música adaptadas a Primaria bajo normativa LOMLOE.</p><a class="go" href="https://chatgpt.com/g/g-67a5d48915e881918cea4c3a809c1a5a-situaciones-de-aprendizaje-musica-primaria-jcyl">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">PLÁSTICA</span><h3>Situaciones de Aprendizaje Plástica</h3><p>Crea situaciones de aprendizaje de Plástica adaptadas a Primaria bajo normativa LOMLOE.</p><a class="go" href="https://chatgpt.com/g/g-67a5d84b59c08191b0a0e33051462a93-situaciones-de-aprendizaje-plastica-primaria-jcyl">Abrir GPT →</a></div>
+    </div>
+
+    <h3 style="font-family:'IBM Plex Mono';font-size:.78rem;color:var(--muted);margin-bottom:14px;">// EVALUACIÓN (3)</h3>
+    <div class="grid4" style="margin-bottom:40px;">
+      <div class="card"><span class="tag">EVALUACIÓN</span><h3>Evaluador por Competencias</h3><p>Asistente que califica por competencias y calcula niveles de desempeño para docentes de Primaria.</p><a class="go" href="https://chatgpt.com/g/g-67f8f147bf4881918093f39e65c117ab-evaluador-por-competencias-docentes-primaria">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">EVALUACIÓN</span><h3>Rúbricas Evaluación Primaria JCyL</h3><p>Diseña rúbricas de evaluación alineadas con el currículo de Castilla y León.</p><a class="go" href="https://chatgpt.com/g/g-67c1998b9d208191a6c20471dae04efa-rubricas-evaluacion-primaria-jcyl">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">EVALUACIÓN</span><h3>Comentarios para Boletines</h3><p>Redacta comentarios personalizados para boletines escolares.</p><a class="go" href="https://chatgpt.com/g/g-68120c7839f88191807d7d8228e5b557-comentarios-para-boletines-escolares">Abrir GPT →</a></div>
+    </div>
+
+    <h3 style="font-family:'IBM Plex Mono';font-size:.78rem;color:var(--muted);margin-bottom:14px;">// GESTIÓN Y DOCUMENTACIÓN (3)</h3>
+    <div class="grid4" style="margin-bottom:40px;">
+      <div class="card"><span class="tag">COMUNICACIÓN</span><h3>Comunicación Institucional</h3><p>Redacta y mejora comunicaciones institucionales aplicando las 7 Cs.</p><a class="go" href="https://chatgpt.com/g/g-681dbec91b7481918b3b9d94ccdd118e-asistente-de-comunicacion-institucional">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">DOCUMENTACIÓN</span><h3>Memoria Técnica de Proyecto</h3><p>Asiste en la creación de memorias de trabajo detalladas.</p><a class="go" href="https://chatgpt.com/g/g-67f50855ce348191bf9173981dc039a0-memoria-tecnica-de-ejecucion-del-proyecto">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">OPOSICIONES</span><h3>Programación Didáctica Opos JCyL</h3><p>Prepara programaciones y unidades para oposiciones de maestros en Castilla y León.</p><a class="go" href="https://chatgpt.com/g/g-67af780d4d1c819187f027059f192d60-ayuda-programacion-didactica-opos-maestros-jcyl">Abrir GPT →</a></div>
+    </div>
+
+    <h3 style="font-family:'IBM Plex Mono';font-size:.78rem;color:var(--muted);margin-bottom:14px;">// CREATIVIDAD Y CONTENIDO (3)</h3>
+    <div class="grid4" style="margin-bottom:40px;">
+      <div class="card"><span class="tag">PODCAST</span><h3>Creador de Podcasts Educativos</h3><p>Crea podcasts educativos desde cero, con guiones claros y adaptados.</p><a class="go" href="https://chatgpt.com/g/g-684023ebb3e48191a0eb67d7d282eef4-creador-de-podcasts-educativos">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">LECTURA</span><h3>Aventuras Literarias</h3><p>Diseña actividades de comprensión lectora para fomentar la lectura en Primaria.</p><a class="go" href="https://chatgpt.com/g/g-67a5dba83fd88191866e26be62826b68-aventuras-literarias-fomento-de-la-lectura">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">ESCRITURA</span><h3>Asistente para Escribir tu Libro</h3><p>Convierte tu idea en un libro con ayuda experta paso a paso.</p><a class="go" href="https://chatgpt.com/g/g-67dbfe46edc48191a7a2f57b1bc7731d-asistente-experto-para-escribir-tu-libro">Abrir GPT →</a></div>
+    </div>
+
+    <h3 style="font-family:'IBM Plex Mono';font-size:.78rem;color:var(--muted);margin-bottom:14px;">// IA (2)</h3>
+    <div class="grid4">
+      <div class="card"><span class="tag">IA</span><h3>Creador de Prompts</h3><p>Experto en la elaboración de prompts para modelos de lenguaje.</p><a class="go" href="https://chatgpt.com/g/g-67977e4f50fc8191952ad423469ee712-creador-de-prompts">Abrir GPT →</a></div>
+      <div class="card"><span class="tag">IA</span><h3>Asistente IA Educativa</h3><p>Transforma tu proyecto de IA aplicada en educación en algo concreto y accionable.</p><a class="go" href="https://chatgpt.com/g/g-680a1f5bb5808191b7aad60b72144435-asistente-ia-educativa">Abrir GPT →</a></div>
+      <div class="card" style="border-color:#3B82F6;">
+        <span class="tag">CATÁLOGO COMPLETO</span>
+        <h3>Ver todos los GPTs</h3>
+        <p>Explora el listado completo y actualizado de asistentes personalizados, con filtros por categoría.</p>
+        <a class="go" href="https://luisgeria.github.io/Formacion-IA-para-el-profesorado/">Ver catálogo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRESENTACIONES -->
+<section id="presentaciones">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">MATERIAL FORMATIVO</span>
+      <h2>Presentaciones y canales</h2>
+    </div>
+    <div class="media-row">
+      <div class="media-item"><div class="l"><b>IAprendizaje TV</b><span>Canal de YouTube · vídeos didácticos y entrevistas</span></div><a href="https://www.youtube.com/@IAprendizaje_tv">Ver canal →</a></div>
+      <div class="media-item"><div class="l"><b>Radio IAprendizaje</b><span>Podcast en iVoox · reflexiones sobre IA y docencia</span></div><a href="https://www.ivoox.com/podcast-radio-iaprendizaje_sq_f12478420_1.html">Escuchar →</a></div>
+      <div class="media-item"><div class="l"><b>Blog Educación Crítica IA</b><span>Artículos de análisis y divulgación crítica</span></div><a href="https://educacioncriticaia.blogspot.com/">Leer blog →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">CONTACTO</span>
+      <h2>¿Hablamos?</h2>
+      <p>Dos formas de trabajar juntos, además de cualquier consulta puntual.</p>
+    </div>
+
+    <div class="grid3" style="margin-bottom:40px;grid-template-columns:repeat(2,1fr);max-width:700px;">
+      <div class="card">
+        <span class="tag">CENTROS EDUCATIVOS</span>
+        <h3>¿Quieres formación en tu centro?</h3>
+        <p>Sesiones prácticas de IA para claustros: sin humo, con herramientas que se usan al día siguiente.</p>
+        <a class="go" href="mailto:luisgeria.ia@gmail.com?subject=Formación%20en%20mi%20centro">Solicitar información →</a>
+      </div>
+      <div class="card">
+        <span class="tag">OTRAS CONSULTAS</span>
+        <h3>¿Tienes otra propuesta?</h3>
+        <p>Colaboraciones, ponencias o cualquier consulta sobre el proyecto IAprendizaje.</p>
+        <a class="go" href="mailto:luisgeria.ia@gmail.com?subject=Consulta%20IAprendizaje">Escribir directamente →</a>
+      </div>
+    </div>
+
+    <div class="contact">
+      <div class="contact-info">
+        <b>Luis Ángel González Ortega</b>
+        <p>Formación, colaboraciones o cualquier consulta sobre el proyecto.</p>
+        <a class="mail" href="mailto:luisgeria.ia@gmail.com">luisgeria.ia@gmail.com</a>
+      </div>
+      <form id="contactForm">
+        <input type="text" id="cf-name" placeholder="Nombre" required />
+        <input type="email" id="cf-email" placeholder="Email" required />
+        <textarea id="cf-msg" placeholder="Mensaje" required></textarea>
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="logo"><span class="dot"></span>IAprendizaje</div>
+    <p class="fine">© 2026 IAprendizaje — proyecto de Luis Ángel González Ortega.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('cf-name').value.trim();
+  var email = document.getElementById('cf-email').value.trim();
+  var msg = document.getElementById('cf-msg').value.trim();
+  var subject = encodeURIComponent('Contacto desde IAprendizaje — ' + name);
+  var body = encodeURIComponent(msg + '\n\n— ' + name + ' (' + email + ')');
+  window.location.href = 'mailto:luisgeria.ia@gmail.com?subject=' + subject + '&body=' + body;
+});
+</script>
+
+</body>
+</html>
