@@ -177,6 +177,27 @@
   @media(max-width:520px){.grid3,.grid4{grid-template-columns:1fr;}}
   @media(max-width:760px){.page-hero h1{font-size:26px;}}
 </style>
+
+<style>
+  /* footer links + app icons + course meta hidden state */
+  .foot-links{display:flex;gap:60px;padding-bottom:28px;flex-wrap:wrap;}
+  .foot-col{display:flex;flex-direction:column;gap:8px;}
+  .foot-col-title{font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+  .foot-col a{font-size:13px;color:var(--text);}
+  .foot-col a:hover{color:var(--teal);}
+  .app-card .icon{font-size:22px;margin-bottom:12px;display:block;line-height:1;}
+  .app-card .icon-fallback{width:16px;height:16px;border-radius:5px;margin-bottom:14px;}
+  .course-row .meta:empty{display:none;}
+  .badge-aula{display:inline-block;font-size:10px;font-weight:700;background:rgba(47,174,134,.12);color:var(--emerald);padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:middle;}
+  .badge-otros{display:inline-block;font-size:10px;font-weight:700;background:rgba(255,255,255,.12);color:#B9C9D1;padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:middle;}
+  .subgroup-label{grid-column:1/-1;font-size:12px;font-weight:700;color:#B9C9D1;text-transform:uppercase;letter-spacing:.04em;margin:22px 0 4px;}
+  .subgroup-label:first-child{margin-top:0;}
+  .legal-body h2{font-size:20px;margin:28px 0 10px;}
+  .legal-body h2:first-child{margin-top:0;}
+  .legal-body p, .legal-body li{font-size:14px;color:var(--text);line-height:1.7;}
+  .legal-body ul{padding-left:20px;margin:0 0 12px;}
+  .legal-disclaimer{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:13px;color:var(--text);margin-bottom:32px;}
+</style>
 </head>
 <body>
 
@@ -373,8 +394,23 @@
       </div>
       <a href="mailto:luisgeria.ia@gmail.com" class="btn btn-emerald">Escribir a luisgeria.ia@gmail.com</a>
     </div>
+    <div class="foot-links">
+      <div class="foot-col">
+        <span class="foot-col-title">Redes</span>
+        <a href="https://www.youtube.com/@IAprendizaje_tv" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.ivoox.com/podcast-radio-iaprendizaje_sq_f12478420_1.html" target="_blank" rel="noopener">Podcast</a>
+        <a href="https://educacioncriticaia.blogspot.com/" target="_blank" rel="noopener">Blog</a>
+        <a href="https://x.com/IA_prendizaje" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+      <div class="foot-col">
+        <span class="foot-col-title">Legal</span>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
     <div class="foot-meta">
-      <span>iAprendizaje — CEIP Puente de Simancas, Valladolid</span>
+      <span>© 2026 iAprendizaje</span>
       <span>@IAprendizaje</span>
     </div>
   </div>

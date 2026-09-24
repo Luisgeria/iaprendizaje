@@ -112,7 +112,7 @@
   .apps-section .section-head p{color:#B9C9D1;}
   .apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   .app-card{background:rgba(255,255,255,.06);border-radius:16px;padding:22px;}
-  .app-card .dot{width:16px;height:16px;border-radius:5px;margin-bottom:14px;}
+  .app-card .icon{font-size:22px;margin-bottom:12px;display:block;line-height:1;}
   .app-card h4{margin:0 0 6px;font-size:15px;}
   .app-card p{margin:0;font-size:13px;color:#B9C9D1;}
   .apps-more{text-align:center;margin-top:28px;}
@@ -124,6 +124,11 @@
   .contact-row h3{margin:0 0 8px;font-size:22px;}
   .contact-row p{margin:0;font-size:14px;color:var(--text);}
   .foot-meta{display:flex;justify-content:space-between;font-size:13px;color:#8A99A6;flex-wrap:wrap;gap:8px;}
+  .foot-links{display:flex;gap:60px;padding-bottom:28px;flex-wrap:wrap;}
+  .foot-col{display:flex;flex-direction:column;gap:8px;}
+  .foot-col-title{font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+  .foot-col a{font-size:13px;color:var(--text);}
+  .foot-col a:hover{color:var(--teal);}
 
   @media (max-width:760px){
     .formacion-grid, .apps-grid{grid-template-columns:1fr;}
@@ -221,17 +226,17 @@
         </div>
         <div class="apps-grid">
           <div class="app-card">
-            <div class="dot" style="background:var(--emerald);"></div>
+            <span class="icon">📊</span>
             <h4>Cuaderno de Notas</h4>
             <p>Evaluación por competencias clave, curso a curso.</p>
           </div>
           <div class="app-card">
-            <div class="dot" style="background:var(--teal);"></div>
+            <span class="icon">🗂️</span>
             <h4>DocenFicha</h4>
             <p>Control horario del profesorado, con exportación a Excel.</p>
           </div>
           <div class="app-card">
-            <div class="dot" style="background:#4FA6A0;"></div>
+            <span class="icon">🎒</span>
             <h4>Registro de Alumnos</h4>
             <p>Salidas de comedor, transporte y casa, a diario en la PDI.</p>
           </div>
@@ -253,8 +258,23 @@
       </div>
       <a href="mailto:luisgeria.ia@gmail.com" class="btn btn-emerald">Escribir a luisgeria.ia@gmail.com</a>
     </div>
+    <div class="foot-links">
+      <div class="foot-col">
+        <span class="foot-col-title">Redes</span>
+        <a href="https://www.youtube.com/@IAprendizaje_tv" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.ivoox.com/podcast-radio-iaprendizaje_sq_f12478420_1.html" target="_blank" rel="noopener">Podcast</a>
+        <a href="https://educacioncriticaia.blogspot.com/" target="_blank" rel="noopener">Blog</a>
+        <a href="https://x.com/IA_prendizaje" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+      <div class="foot-col">
+        <span class="foot-col-title">Legal</span>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
     <div class="foot-meta">
-      <span>iAprendizaje — CEIP Puente de Simancas, Valladolid</span>
+      <span>© 2026 iAprendizaje</span>
       <span>@IAprendizaje</span>
     </div>
   </div>
