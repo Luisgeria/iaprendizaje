@@ -100,12 +100,14 @@ footer{max-width:1180px;margin:0 auto;padding:0 3.5vw 42px;color:var(--muted);fo
  .cover{padding:34px 22px}
  .cover::before{right:-200px}
 }
+@page{margin:8mm}
 @media print{
  header{display:none}
  body{background:white}
  main{max-width:none;padding:0}
- section{box-shadow:none;border:1px solid var(--rule);border-radius:0;margin:0 0 10px;padding:14px 18px;break-inside:avoid-page}
+ section{box-shadow:none;border:1px solid var(--rule);border-radius:0;margin:0 0 7px;padding:9px 18px;break-inside:avoid-page}
  section#anexo{break-inside:auto}
+ section#iaprendizaje{break-inside:auto}
  section:not(.cover)::before{width:5px}
  .cover{border:0;padding:20px 26px}
  .cover h1{font-size:30px}
@@ -116,24 +118,24 @@ footer{max-width:1180px;margin:0 auto;padding:0 3.5vw 42px;color:var(--muted);fo
  .stat{padding:13px 14px}
  .stat b{font-size:28px}
  .stat span{margin-top:5px}
- .cards{grid-template-columns:repeat(3,1fr);gap:7px;break-before:avoid}
- .cards.two{grid-template-columns:repeat(2,1fr)}
- .card{padding:8px 10px}
- .card strong{font-size:14.5px;margin-bottom:4px}
- .card span{font-size:13px;line-height:1.35}
- .job{grid-template-columns:170px 1fr;padding:9px 0 9px 8px}
+ .cards{grid-template-columns:repeat(3,1fr);gap:6px;break-before:avoid}
+ .cards.two{grid-template-columns:repeat(3,1fr)}
+ .card{padding:6px 9px}
+ .card strong{font-size:14.5px;margin-bottom:3px}
+ .card span{font-size:13px;line-height:1.28}
+ .job{grid-template-columns:170px 1fr;padding:5px 0 5px 8px}
  .job::before{top:16px}
  .job:first-of-type::before{top:8px}
  .agenda div{padding:8px 0}
  .agenda strong{min-width:100px}
- ul.tight li{margin-bottom:9px}
- .note{padding:10px 14px;margin:0 0 12px;break-after:avoid}
+ ul.tight li{margin-bottom:6px}
+ .note{padding:8px 12px;margin:0 0 8px;break-after:avoid}
  details{padding:6px 0}
  details p{font-size:13px;line-height:1.4;margin:6px 0 2px}
  summary{min-height:0;font-size:14px}
  .eyebrow{break-after:avoid;margin-bottom:8px}
  .card,.job,.agenda div,details,.stat{break-inside:avoid}
- h2{break-after:avoid;font-size:22px;margin-bottom:12px}
+ h2{break-after:avoid;font-size:21px;margin-bottom:9px}
  summary::after{display:none}
  footer{padding:4px 0 0;font-size:11px}
  a{color:inherit;text-decoration:none}
@@ -182,6 +184,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 3.5vw 42px;color:var(--muted);fo
   <div class="card"><strong>Kanban</strong><span>Kanban IAprendizaje, aplicación propia de organización de tareas de equipo docente y de aula.</span></div>
   <div class="card"><strong>Moodle, Office 365 y Arduino</strong><span>Formación acreditada en Moodle para docentes, teledocencia y videoconferencia, Office 365 e iniciación a Arduino.</span></div>
   <div class="card"><strong>Competencia Digital Docente</strong><span>Nivel C1 acreditado.</span></div>
+  <div class="card"><strong>Entrenamiento personal</strong><span>Título propio de Entrenador Personal por la Fundación UNED (300 horas, 2018 – 2019).</span></div>
  </div>
 </section>
 
@@ -193,6 +196,8 @@ footer{max-width:1180px;margin:0 auto;padding:0 3.5vw 42px;color:var(--muted);fo
   <div class="job"><div class="years">2015 – 2021</div><div><h3>CEIP Obispo Barrientos, Medina del Campo</h3><p>Especialista en Educación Física y, desde 2016, Jefe de Estudios y coordinador de las prácticas de grado.</p></div></div>
   <div class="job"><div class="years">2010 – 2015</div><div><h3>CRA San Isidro, Santiuste de San Juan Bautista (Segovia)</h3><p>Tutor y especialista en Educación Física; director del centro desde 2012.</p></div></div>
   <div class="job"><div class="years">2005 – 2010</div><div><h3>Centros rurales de Segovia, Ávila, León, Burgos y Valladolid</h3><p>Tutor y especialista en Educación Física en siete centros. Ingreso en el cuerpo el 5 de diciembre de 2005.</p></div></div>
+  <div class="job"><div class="years">2003 – 2005</div><div><h3>Monitor de actividades físico-deportivas, Valladolid</h3><p>Mancomunidad de Torozos, M. T. Servicios Educativos y CLECE. Primeras experiencias profesionales vinculadas al deporte, antes de ingresar en el cuerpo.</p></div></div>
+  <div class="job"><div class="years">1990 – 2002</div><div><h3>Estación de servicio, Valladolid</h3><p>Doce años en estación de servicio (Distribuidora de Productos Petrolíferos; CEDIPSA, grupo CEPSA, hoy Moeve), con funciones de encargado en la etapa final.</p></div></div>
  </div>
 </section>
 
@@ -243,6 +248,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 3.5vw 42px;color:var(--muted);fo
   <div class="card"><strong>Experto Universitario en Informática Educativa</strong><span>UNED</span></div>
   <div class="card"><strong>Experto Universitario en Educación de Personas Adultas</strong><span>UNED</span></div>
   <div class="card"><strong>Especialización en Educación Vial</strong><span>UNED y DGT</span></div>
+  <div class="card"><strong>Entrenador Personal</strong><span>Fundación UNED · Título propio · 300 horas · 2018 – 2019</span></div>
   <div class="card"><strong>Competencia Digital Docente · nivel C1</strong><span>Acreditado. Formación permanente: 233 créditos · 2.330 horas reconocidas en el Registro de Formación Permanente del Profesorado de Castilla y León, 2005 – 2026.</span></div>
  </div>
 </section>
@@ -276,7 +282,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 3.5vw 42px;color:var(--muted);fo
  <details><summary>Atención a la diversidad y altas capacidades</summary><p>Evaluación y atención de las altas capacidades · Trastornos de conducta y comportamiento en Primaria · Diseño y aplicación de medidas de atención a la diversidad · Prevención de la violencia a través de la empatía animal.</p></details>
  <details><summary>Lectura, biblioteca y lenguaje audiovisual</summary><p>La lectura y las TIC · La biblioteca escolar · Aprender con el periódico · El cine, un recurso didáctico · Leer el cine · El teatro en las aulas.</p></details>
  <details><summary>Currículo, evaluación y competencias</summary><p>Revisión de los currículos de Primaria en Castilla y León · Enseñanza y aprendizaje de las competencias básicas · Evaluación individualizada de 6.º y evaluación de diagnóstico · Estrategias de innovación e investigación educativa.</p></details>
- <details><summary>Educación Física, salud y matemáticas</summary><p>Juego deportivo y naturaleza como aula · Recursos para las sesiones de EF · Formación ciclista · Primeros auxilios y protocolos de actuación · Salud mental del profesorado · Matemáticas lúdicas y rincón matemático.</p></details>
+ <details><summary>Educación Física, salud y matemáticas</summary><p>Juego deportivo y naturaleza como aula · Recursos para las sesiones de EF · Formación ciclista · Primeros auxilios y protocolos de actuación · Salud mental del profesorado · Matemáticas lúdicas y rincón matemático · Entrenador Personal, título propio de la Fundación UNED (300 h, 2018 – 2019).</p></details>
 </section>
 
 </main>

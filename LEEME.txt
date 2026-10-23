@@ -1,7 +1,7 @@
 PUBLICAR EN IAPRENDIZAJE
 
 1. En la carpeta raíz del proyecto, sustituye index.html y apps-y-cursos.html por los incluidos aquí. Conservan el catálogo de 29 apps enviado el 23 de octubre.
-2. Añade curriculum.html y curriculum.pdf en esa misma carpeta. Son copias sin cambios del currículo vistoso corregido el 22 de octubre, sin «Cuerpo 0597».
+2. Añade curriculum.html y curriculum.pdf en esa misma carpeta. Son copias del currículo vistoso corregido el 22 de octubre, sin «Cuerpo 0597», con el título de Entrenador Personal (Fundación UNED) añadido el 23 de octubre.
 3. Publica como lo haces habitualmente. No hace falta cambiar permisos de Drive ni iniciar sesión para abrir el CV desde la web una vez subidos los archivos.
 4. Comprueba el botón «Mi currículo» de la portada y los enlaces HTML/PDF del pie.
 
