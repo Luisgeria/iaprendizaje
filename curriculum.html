@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Currículum vitae de Luis Ángel González Ortega, maestro de Educación Primaria y Educación Física, formador en IA y competencia digital docente.">
+<title>CV · Luis Ángel González Ortega</title>
+<style>
+:root{
+ --ink:#251f21;--muted:#585254;--sand:#f4efec;--teal:#73a89a;--teal-dark:#397361;
+ --deep:#22463c;--deep-2:#2c5a4d;--rule:#eae9ea;--radius:16px;
+ --shadow:0 2px 6px rgba(37,31,33,.05),0 14px 34px rgba(37,31,33,.07)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:Arial,sans-serif;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:var(--teal-dark);overflow-wrap:anywhere}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--teal-dark);outline-offset:3px}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 3.5vw;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.brand{font-size:14px;font-weight:600;letter-spacing:.05em;display:flex;align-items:center;gap:9px}
+.brand::before{content:'';width:10px;height:10px;border-radius:50%;background:var(--teal)}
+.brand span{font-weight:400;color:var(--muted)}
+header nav{display:flex;gap:8px;flex-wrap:wrap}
+header nav a,header nav button{font-size:13px;text-decoration:none;color:inherit;background:white;border:1px solid #cdc9c7;border-radius:999px;min-height:40px;padding:8px 15px;display:inline-flex;align-items:center;cursor:pointer;transition:background .15s,border-color .15s}
+header nav a:hover,header nav button:hover{background:var(--sand);border-color:var(--teal)}
+main{max-width:1180px;margin:auto;padding:30px 3.5vw 64px}
+section{background:white;border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(28px,3.5vw,54px);margin-bottom:24px;position:relative;overflow:hidden}
+section:not(.cover)::before{content:'';position:absolute;left:0;top:0;bottom:0;width:7px;background:linear-gradient(180deg,var(--teal),var(--teal-dark))}
+section.plain::before{background:var(--rule)}
+.eyebrow{color:var(--teal-dark);text-transform:uppercase;letter-spacing:.14em;font-size:12.5px;font-weight:700;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+.eyebrow .num{font-family:Georgia,serif;font-weight:400;font-size:15px;color:var(--muted);letter-spacing:.05em}
+h1{font-family:Georgia,serif;font-weight:400;letter-spacing:-.035em;font-size:clamp(40px,5.6vw,66px);line-height:1.05;margin:0}
+h2{font-family:Georgia,serif;font-weight:400;letter-spacing:-.025em;font-size:clamp(26px,3vw,38px);line-height:1.15;margin:0 0 24px}
+h3{font-size:17px;margin:0}
+.sub{color:var(--muted);font-size:clamp(17px,1.8vw,22px);margin:18px 0 0;line-height:1.45;max-width:46em}
+
+/* Portada */
+.cover{background:linear-gradient(128deg,var(--deep) 0%,var(--deep-2) 55%,var(--teal-dark) 100%);color:var(--sand);padding:clamp(38px,5vw,72px)}
+.cover::before{content:'';position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;background:rgba(115,168,154,.18)}
+.cover::after{content:'';position:absolute;right:60px;bottom:-190px;width:300px;height:300px;border-radius:50%;border:60px solid rgba(244,239,236,.07)}
+.cover .eyebrow{color:#bcd9cf}
+.cover h1{color:#fff;max-width:14em}
+.cover .sub{color:#d7e5e0}
+.contact{margin-top:26px;padding-top:22px;border-top:1px solid rgba(244,239,236,.28);color:#cfe0da;font-size:15px;display:flex;flex-wrap:wrap;gap:6px 0;position:relative;z-index:1}
+.contact span:not(:last-child):after{content:'·';margin:0 10px;color:rgba(244,239,236,.5)}
+.contact a{color:#eaf3f0;text-decoration-color:rgba(244,239,236,.5)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px;position:relative;z-index:1}
+.stat{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-top:4px solid var(--teal);border-radius:12px;padding:20px 18px}
+.stat b{font-family:Georgia,serif;font-weight:400;font-size:clamp(30px,2.8vw,42px);display:block;line-height:1.05;letter-spacing:-.02em;color:#fff}
+.stat span{color:#cfe0da;font-size:13.5px;display:block;margin-top:8px;line-height:1.35}
+
+/* Tarjetas */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cards.two{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--sand);border:1px solid #efe9e6;border-top:4px solid var(--teal);border-radius:12px;padding:20px;transition:transform .18s,box-shadow .18s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(37,31,33,.10)}
+.card strong{font-size:16.5px;display:block;margin-bottom:7px;line-height:1.25}
+.card span{font-size:14.5px;line-height:1.45;color:var(--muted)}
+
+/* Timeline de experiencia */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:'';position:absolute;left:8px;top:10px;bottom:10px;width:2px;background:linear-gradient(180deg,var(--teal),var(--rule))}
+.job{position:relative;border-top:1px solid var(--rule);padding:20px 0 20px 8px;display:grid;grid-template-columns:180px 1fr;gap:6px 26px}
+.job:first-of-type{border-top:0;padding-top:6px}
+.job::before{content:'';position:absolute;left:-31px;top:26px;width:12px;height:12px;border-radius:50%;background:white;border:3px solid var(--teal-dark)}
+.job:first-of-type::before{top:10px;background:var(--teal-dark)}
+.job .years{color:var(--teal-dark);font-weight:700;font-size:14px;letter-spacing:.02em}
+.job p{margin:6px 0 0;color:var(--muted);font-size:15px}
+
+/* Listas */
+ul.tight{margin:0;padding-left:20px}
+ul.tight li{margin:0 0 14px;font-size:15px}
+ul.tight li:last-child{margin-bottom:0}
+ul.tight li::marker{color:var(--teal-dark)}
+
+/* Filas con año */
+.agenda div{display:flex;border-top:1px solid var(--rule);padding:12px 0;gap:18px;font-size:15px;align-items:baseline}
+.agenda div:first-child{border-top:0}
+.agenda strong{color:var(--teal-dark);min-width:110px;font-weight:700;font-size:13.5px;letter-spacing:.03em}
+.note{color:var(--muted);font-size:14px;margin:0 0 18px;background:var(--sand);border-left:4px solid var(--teal);border-radius:0 10px 10px 0;padding:14px 18px}
+
+/* Anexo desplegable */
+details{border-top:1px solid var(--rule);padding:14px 0}
+details:last-child{border-bottom:1px solid var(--rule)}
+summary{cursor:pointer;min-height:40px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:12px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';margin-left:auto;font-family:Georgia,serif;font-size:22px;color:var(--teal-dark);width:32px;height:32px;border:1.5px solid var(--teal);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none;transition:transform .18s,background .18s}
+details[open] summary::after{content:'−';background:var(--sand)}
+details p{margin:10px 0 4px;color:var(--muted);font-size:14.5px;max-width:70em}
+
+footer{max-width:1180px;margin:0 auto;padding:0 3.5vw 42px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media screen and (max-width:860px){
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .cards,.cards.two{grid-template-columns:1fr}
+ .job{grid-template-columns:1fr;gap:2px}
+ header{flex-wrap:wrap}
+ main{padding:16px 14px 44px}
+ section{padding:26px 20px}
+ .cover{padding:34px 22px}
+ .cover::before{right:-200px}
+}
+@media print{
+ header{display:none}
+ body{background:white}
+ main{max-width:none;padding:0}
+ section{box-shadow:none;border:1px solid var(--rule);border-radius:0;margin:0 0 10px;padding:14px 18px;break-inside:avoid-page}
+ section#anexo{break-inside:auto}
+ section:not(.cover)::before{width:5px}
+ .cover{border:0;padding:20px 26px}
+ .cover h1{font-size:30px}
+ .cover .sub{margin-top:12px}
+ .cover::after{display:none}
+ .contact{margin-top:16px;padding-top:13px}
+ .stats{margin-top:20px;gap:12px;grid-template-columns:repeat(4,1fr)}
+ .stat{padding:13px 14px}
+ .stat b{font-size:28px}
+ .stat span{margin-top:5px}
+ .cards{grid-template-columns:repeat(3,1fr);gap:7px;break-before:avoid}
+ .cards.two{grid-template-columns:repeat(2,1fr)}
+ .card{padding:8px 10px}
+ .card strong{font-size:14.5px;margin-bottom:4px}
+ .card span{font-size:13px;line-height:1.35}
+ .job{grid-template-columns:170px 1fr;padding:9px 0 9px 8px}
+ .job::before{top:16px}
+ .job:first-of-type::before{top:8px}
+ .agenda div{padding:8px 0}
+ .agenda strong{min-width:100px}
+ ul.tight li{margin-bottom:9px}
+ .note{padding:10px 14px;margin:0 0 12px;break-after:avoid}
+ details{padding:6px 0}
+ details p{font-size:13px;line-height:1.4;margin:6px 0 2px}
+ summary{min-height:0;font-size:14px}
+ .eyebrow{break-after:avoid;margin-bottom:8px}
+ .card,.job,.agenda div,details,.stat{break-inside:avoid}
+ h2{break-after:avoid;font-size:22px;margin-bottom:12px}
+ summary::after{display:none}
+ footer{padding:4px 0 0;font-size:11px}
+ a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand">CV <span>· Luis Ángel González Ortega</span></div>
+ <nav aria-label="Secciones">
+  <a href="#experiencia">Experiencia</a>
+  <a href="#ia">IA educativa</a>
+  <a href="#formacion">Formación</a>
+  <a href="#iaprendizaje">IAprendizaje</a>
+  <a href="#anexo">Anexo</a>
+  <button type="button" onclick="window.print()">Imprimir / PDF</button>
+ </nav>
+</header>
+<main>
+
+<section class="cover">
+ <p class="eyebrow">Currículum vitae</p>
+ <h1>Luis Ángel González Ortega</h1>
+ <p class="sub">Maestro de Educación Primaria y Educación Física · Formador en IA y competencia digital docente · Coordinador TIC</p>
+ <div class="contact">
+  <span>lagonzalezo@educa.jcyl.es</span>
+  <span>653 920 801</span>
+  <span>Geria, Valladolid</span>
+  <span>Portfolio IAprendizaje: <a href="https://iaprendizaje.vercel.app">iaprendizaje.vercel.app</a></span>
+ </div>
+ <div class="stats">
+  <div class="stat"><b>21</b><span>años de docencia</span></div>
+  <div class="stat"><b>6</b><span>actuaciones como ponente</span></div>
+  <div class="stat"><b>8</b><span>tutorías on-line en el CRFPTIC</span></div>
+  <div class="stat"><b>233</b><span>créditos · 2.330 horas de formación permanente</span></div>
+ </div>
+</section>
+
+<section id="competencias">
+ <p class="eyebrow"><span class="num">01</span> Competencias técnicas</p>
+ <h2>Lo que sé hacer</h2>
+ <div class="cards">
+  <div class="card"><strong>IA generativa e IA predictiva</strong><span>Creación de contenidos, programación y evaluación con ayuda de la IA; 21 asistentes GPT propios para docentes dentro del ecosistema IAprendizaje.</span></div>
+  <div class="card"><strong>Google Workspace</strong><span>Tres tutorías on-line «Herramientas de Google en la Educación» impartidas para el CRFPTIC.</span></div>
+  <div class="card"><strong>Excel</strong><span>Exportación de registros a Excel desde DocenFicha, aplicación propia de registro horario del profesorado.</span></div>
+  <div class="card"><strong>Kanban</strong><span>Kanban IAprendizaje, aplicación propia de organización de tareas de equipo docente y de aula.</span></div>
+  <div class="card"><strong>Moodle, Office 365 y Arduino</strong><span>Formación acreditada en Moodle para docentes, teledocencia y videoconferencia, Office 365 e iniciación a Arduino.</span></div>
+  <div class="card"><strong>Competencia Digital Docente</strong><span>Nivel C1 acreditado.</span></div>
+ </div>
+</section>
+
+<section id="experiencia">
+ <p class="eyebrow"><span class="num">02</span> Experiencia profesional</p>
+ <h2>Veintiún años de aula</h2>
+ <div class="timeline">
+  <div class="job"><div class="years">2021 – actualidad</div><div><h3>CEIP Puente de Simancas, Valladolid</h3><p>Maestro de Educación Física y tutor. Coordinador TIC del centro. Curso 2026/2027: tutoría de 6.º de Primaria.</p></div></div>
+  <div class="job"><div class="years">2015 – 2021</div><div><h3>CEIP Obispo Barrientos, Medina del Campo</h3><p>Especialista en Educación Física y, desde 2016, Jefe de Estudios y coordinador de las prácticas de grado.</p></div></div>
+  <div class="job"><div class="years">2010 – 2015</div><div><h3>CRA San Isidro, Santiuste de San Juan Bautista (Segovia)</h3><p>Tutor y especialista en Educación Física; director del centro desde 2012.</p></div></div>
+  <div class="job"><div class="years">2005 – 2010</div><div><h3>Centros rurales de Segovia, Ávila, León, Burgos y Valladolid</h3><p>Tutor y especialista en Educación Física en siete centros. Ingreso en el cuerpo el 5 de diciembre de 2005.</p></div></div>
+ </div>
+</section>
+
+<section id="ia">
+ <p class="eyebrow"><span class="num">03</span> Especialización en inteligencia artificial educativa</p>
+ <h2>IA aplicada al aula, con evidencia</h2>
+ <ul class="tight">
+  <li><strong>Licencia por estudios</strong> concedida por la Junta de Castilla y León como investigador principal del proyecto IAprendizaje: un curso completo de dedicación reconocida a la inteligencia artificial aplicada al aula.</li>
+  <li><strong>Publicación:</strong> <em>IA Segura en Educación. Guía Antifrágil para Docentes según el AI Act 2025</em>. Zenodo, 2026. DOI <a href="https://doi.org/10.5281/zenodo.20212656">10.5281/zenodo.20212656</a>.</li>
+  <li><strong>IAprendizaje:</strong> ecosistema propio de 23 aplicaciones educativas, 8 cursos de autoformación y 21 asistentes GPT diseñados para docentes, en abierto y en uso por profesorado de la comunidad.</li>
+  <li><strong>Divulgación:</strong> blog <em>Educación Crítica e IA</em>, podcast <em>Radio IAprendizaje</em>, canal de YouTube y cuenta @IA_prendizaje.</li>
+ </ul>
+</section>
+
+<section id="ponencias">
+ <p class="eyebrow"><span class="num">04</span> Ponencias y cursos impartidos</p>
+ <h2>Formación al profesorado</h2>
+ <div class="agenda">
+  <div><strong>2025/2026</strong><span>Iniciación práctica a la Inteligencia Artificial en Educación. Jornada · CFIE de Valladolid</span></div>
+  <div><strong>2025/2026</strong><span>El uso de las TICs y la IA. Curso · CEIP El Peral, Valladolid</span></div>
+  <div><strong>2024/2025</strong><span>Herramientas TIC para la evaluación por competencias. Curso · CFIE de Valladolid · CEIP Obispo Barrientos, Medina del Campo</span></div>
+  <div><strong>2017/2018</strong><span>Maestro tutor del practicum. Enseñanzas universitarias de grado · D. P. de Educación de Valladolid</span></div>
+  <div><strong>2016/2017</strong><span>Formación para maestros en fase de prácticas · CFIE de Segovia</span></div>
+  <div><strong>2014/2015</strong><span>Jornada de difusión RED XXI. Grupos interactivos · CFIE de Segovia</span></div>
+ </div>
+ <p class="note" style="margin-top:20px"><strong>Tutorías on-line para el CRFPTIC (2009 – 2017):</strong> ocho tutorías on-line, con temas recurrentes de Herramientas de Google en la Educación (tres ediciones), recursos educativos del portal JCyL, lectura y cine como recursos didácticos.</p>
+</section>
+
+<section id="coordinacion">
+ <p class="eyebrow"><span class="num">05</span> Coordinación de actividades de formación</p>
+ <h2>Coordinación</h2>
+ <div class="agenda">
+  <div><strong>Actualidad</strong><span>Coordinador TIC del CEIP Puente de Simancas</span></div>
+  <div><strong>2022/2023</strong><span>Grupo de trabajo Desarrollo de las TIC · CFIE de Valladolid</span></div>
+  <div><strong>2016/17 – 2020/21</strong><span>Coordinación de las prácticas de grado · D. P. de Educación de Valladolid</span></div>
+  <div><strong>2014/2015</strong><span>Mejora en la gestión de la biblioteca y actualización del Plan lector · CFIE de Segovia</span></div>
+  <div><strong>2013/2014</strong><span>Introducción a la enseñanza y el aprendizaje de las competencias básicas · CFIE de Segovia</span></div>
+  <div><strong>2009/2010</strong><span>Seminario de prevención de drogodependencias · CFIE de Segovia</span></div>
+ </div>
+</section>
+
+<section id="formacion">
+ <p class="eyebrow"><span class="num">06</span> Formación reglada y certificaciones</p>
+ <h2>Titulaciones</h2>
+ <div class="cards two">
+  <div class="card"><strong>Grado en Educación Primaria</strong><span>Universidad de Valladolid</span></div>
+  <div class="card"><strong>Maestro Especialista en Educación Física</strong><span>Universidad de Valladolid</span></div>
+  <div class="card"><strong>Experto Universitario en Informática Educativa</strong><span>UNED</span></div>
+  <div class="card"><strong>Experto Universitario en Educación de Personas Adultas</strong><span>UNED</span></div>
+  <div class="card"><strong>Especialización en Educación Vial</strong><span>UNED y DGT</span></div>
+  <div class="card"><strong>Competencia Digital Docente · nivel C1</strong><span>Acreditado. Formación permanente: 233 créditos · 2.330 horas reconocidas en el Registro de Formación Permanente del Profesorado de Castilla y León, 2005 – 2026.</span></div>
+ </div>
+</section>
+
+<section id="iaprendizaje">
+ <p class="eyebrow"><span class="num">07</span> Ecosistema IAprendizaje</p>
+ <h2>Aplicaciones propias</h2>
+ <p class="note">Aplicaciones que facilitan la labor docente y reducen el tiempo dedicado a tareas burocráticas.</p>
+ <div class="cards">
+  <div class="card"><strong>Agente AACC</strong><span>Genera expedientes de ampliación curricular para Altas Capacidades.</span></div>
+  <div class="card"><strong>DocenFicha</strong><span>Registro horario del profesorado con exportación a Excel.</span></div>
+  <div class="card"><strong>Competencias Clave (CCBB)</strong><span>Cálculo automático según el Decreto 38/2022 (CyL).</span></div>
+  <div class="card"><strong>Cuaderno de Notas</strong><span>Gestión digital de calificaciones del alumnado.</span></div>
+  <div class="card"><strong>Cuaderno del Profesor Digital</strong><span>Fichas, planificación y observación diaria en una app.</span></div>
+  <div class="card"><strong>En Guardia Primaria</strong><span>Gestión del calendario de sustituciones y ausencias.</span></div>
+  <div class="card"><strong>Registro de Alumnos</strong><span>Control diario de destinos: comedor, transporte, casa.</span></div>
+  <div class="card"><strong>Seguimiento de Lectura</strong><span>Registro y gráfica del historial lector del alumnado.</span></div>
+  <div class="card"><strong>Kanban IAprendizaje</strong><span>Organización de tareas de equipo docente y de aula.</span></div>
+  <div class="card"><strong>Generador de Fichas de Cálculo</strong><span>Cuadernillos en PDF adaptados al currículo LOMLOE.</span></div>
+  <div class="card"><strong>Generador de Fichas de Lengua</strong><span>Ortografía, gramática, vocabulario y comprensión lectora.</span></div>
+ </div>
+</section>
+
+<section id="anexo" class="plain">
+ <p class="eyebrow"><span class="num">08</span> Anexo · detalle de formación permanente</p>
+ <h2>Formación permanente, por áreas</h2>
+ <details><summary>Inteligencia artificial y competencia digital docente</summary><p>Creación de contenidos, programación y evaluación con ayuda de la IA · IA generativa e IA predictiva · Mejora de la competencia digital docente y del alumnado · Plan Digital CÓDICE TIC · Jornadas de mejora de la competencia digital educativa · Plan de seguridad y confianza digital.</p></details>
+ <details><summary>TIC, recursos digitales y entornos on-line</summary><p>Moodle para docentes · Teledocencia y videoconferencia · Iniciación a Arduino · Office 365 · Herramientas de Google · Edición de audio y podcast · Web de centros JCyL · Aulas digitales RED XXI.</p></details>
+ <details><summary>Formación de formadores y tutoría de prácticas</summary><p>Formación de tutores del practicum · Coordinación de prácticas de grado · Formación para profesores en fase de prácticas.</p></details>
+ <details><summary>Dirección, organización y calidad educativa</summary><p>Formación inicial para directores · Formación LOMCE para directores · Modelo de autoevaluación de organizaciones educativas · Equipos de mejora de experiencias de calidad.</p></details>
+ <details><summary>Atención a la diversidad y altas capacidades</summary><p>Evaluación y atención de las altas capacidades · Trastornos de conducta y comportamiento en Primaria · Diseño y aplicación de medidas de atención a la diversidad · Prevención de la violencia a través de la empatía animal.</p></details>
+ <details><summary>Lectura, biblioteca y lenguaje audiovisual</summary><p>La lectura y las TIC · La biblioteca escolar · Aprender con el periódico · El cine, un recurso didáctico · Leer el cine · El teatro en las aulas.</p></details>
+ <details><summary>Currículo, evaluación y competencias</summary><p>Revisión de los currículos de Primaria en Castilla y León · Enseñanza y aprendizaje de las competencias básicas · Evaluación individualizada de 6.º y evaluación de diagnóstico · Estrategias de innovación e investigación educativa.</p></details>
+ <details><summary>Educación Física, salud y matemáticas</summary><p>Juego deportivo y naturaleza como aula · Recursos para las sesiones de EF · Formación ciclista · Primeros auxilios y protocolos de actuación · Salud mental del profesorado · Matemáticas lúdicas y rincón matemático.</p></details>
+</section>
+
+</main>
+<footer>
+ <span>Luis Ángel González Ortega · Currículum vitae</span>
+ <span>Portfolio: <a href="https://iaprendizaje.vercel.app">iaprendizaje.vercel.app</a></span>
+</footer>
+<script>
+(function(){
+ var opened=[];
+ window.addEventListener('beforeprint',function(){
+  opened=[];
+  document.querySelectorAll('details').forEach(function(d,i){if(d.open)opened.push(i);d.open=true;});
+ });
+ window.addEventListener('afterprint',function(){
+  document.querySelectorAll('details').forEach(function(d,i){d.open=opened.indexOf(i)!==-1;});
+ });
+})();
+</script>
+</body>
+</html>
