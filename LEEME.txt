@@ -1,10 +1,29 @@
-PUBLICAR EN IAPRENDIZAJE
+RUTA IA DE CENTRO · iAprendizaje
+Paquete combinado del 15 de noviembre de 2026
 
-1. En la carpeta raíz del proyecto, sustituye index.html y apps-y-cursos.html por los incluidos aquí. Conservan el catálogo de 29 apps enviado el 23 de octubre.
-2. Añade curriculum.html y curriculum.pdf en esa misma carpeta. Son copias del currículo vistoso corregido el 22 de octubre, sin «Cuerpo 0597», con el título de Entrenador Personal (Fundación UNED) añadido el 23 de octubre.
-3. Publica como lo haces habitualmente. No hace falta cambiar permisos de Drive ni iniciar sesión para abrir el CV desde la web una vez subidos los archivos.
-4. Comprueba el botón «Mi currículo» de la portada y los enlaces HTML/PDF del pie.
+QUÉ INCLUYE
+- ruta-ia.html: página nueva del proyecto, con las cinco fases, los resultados previstos de cada una, la base real, los límites y una vía de consulta para centros.
+- index.html: bloque breve de presentación y enlace «Ruta IA» en el menú. Conserva el recuento de 30 apps de aula, cuatro de otros proyectos y nueve cursos.
+- apps-y-cursos.html: conserva las 34 apps del paquete anterior, añade «Ruta IA» al menú y corrige la metadescripción que todavía decía 29 apps.
 
-Mantén los demás archivos, imágenes y páginas de tu web. Este paquete no es el sitio completo. No contiene commits ni cambia el despliegue por sí solo.
+CÓMO SUBIRLO
+1. Descarga y descomprime este ZIP.
+2. En la raíz de tu repositorio iaprendizaje, añade ruta-ia.html y sustituye index.html y apps-y-cursos.html por los incluidos aquí.
+3. No borres los demás archivos, páginas ni imágenes. Este paquete usa el logo y la foto que ya hay en la web.
+4. Guarda los cambios en GitHub y espera al despliegue de Vercel.
+5. Abre tu web: comprueba el bloque de inicio, la pestaña «Ruta IA», el catálogo de 34 apps y el menú en el móvil.
+6. El botón de consulta abre el correo del visitante, dirigido a luisgeria.ia@gmail.com. No hay formulario, base de datos ni reserva automática.
 
-Para volver atrás: conserva una copia de los dos HTML que vas a sustituir y restáuralos si lo necesitas. Puedes retirar también curriculum.html y curriculum.pdf.
+Este ZIP sustituye al ZIP del catálogo entregado antes hoy: no necesitas subir ambos. Incluye también sus cinco apps nuevas.
+
+ALCANCE Y ESTADO
+El nombre final es «Ruta IA de Centro». No se usa «Aula Viva».
+El enlace del menú se añade en los tres HTML de este paquete. Las otras páginas existentes no se modifican; se puede volver a Inicio para acceder al proyecto.
+La presentación distingue HECHO, ASPIRACIÓN y POR DECIDIR. No anuncia un programa ya aplicado, resultados demostrados, precios, fechas ni disponibilidad garantizada. Las consultas de centros permiten estudiar una posible actuación, sujeta al encaje y a los requisitos administrativos y de compatibilidad que correspondan.
+El documento de trabajo original no se incorpora al ZIP ni se publica.
+
+REVISIÓN
+Preparado sobre los dos HTML del paquete de 34 apps del 15 de noviembre, no sobre la versión anterior del repositorio.
+Revisado en Chrome a 1440, 390 y 320 píxeles: sin desbordamiento horizontal. Comprobados los enlaces entre las tres páginas y la navegación móvil.
+Los enlaces y contenidos anteriores del catálogo quedan conservados.
+No se ha publicado nada en GitHub ni en Vercel: este paquete está preparado para tu revisión y subida.

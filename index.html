@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>iAprendizaje — Herramientas de IA para el aula de Castilla y León</title>
-<meta name="description" content="29 apps y 9 cursos nacidos en un aula real de Primaria: evaluación, organización, práctica y formación docente con IA.">
+<meta name="description" content="34 apps: 30 para el aula y 4 de otros proyectos, además de 9 cursos online. Herramientas nacidas de necesidades reales de clase.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Karla:wght@400;500;600;700&display=swap">
 <style>
@@ -57,7 +57,7 @@
   .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;}
   .hamburger span{width:24px;height:2px;background:var(--navy);border-radius:2px;}
 
-  @media (max-width:860px){
+  @media (max-width:1120px){
     .nav-links{
       position:absolute;top:100%;left:0;right:0;background:var(--surface);
       flex-direction:column;gap:0;padding:8px 24px 20px;border-bottom:1px solid var(--line);
@@ -135,6 +135,19 @@
     .hero h1{font-size:32px;}
     .apps-section{padding:40px 24px;border-radius:20px;}
   }
+
+  /* Navegación ampliada y accesibilidad */
+  .nav-links{gap:18px;font-size:14px;}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:4px;}
+  section[id]{scroll-margin-top:100px;}
+  .hamburger{min-width:44px;min-height:44px;align-items:center;justify-content:center;}
+  .nav-links.open{max-height:calc(100dvh - 72px);overflow-y:auto;}
+  .method-intro{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:36px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px;}
+  .method-intro h2{font-size:30px;margin:0 0 10px;}
+  .method-intro p{max-width:720px;color:var(--text);margin:0 0 12px;}
+  .eyebrow{color:var(--teal);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+  @media(max-width:760px){.method-intro{grid-template-columns:1fr;padding:26px;}.method-intro h2{font-size:27px;}}
+
 </style>
 </head>
 <body>
@@ -149,6 +162,7 @@
       <div class="nav-links" id="navLinks">
         <a href="index.html" aria-current="page">Inicio</a>
         <a href="#formacion">Formación</a>
+        <a href="ruta-ia.html">Ruta IA</a>
         <a href="apps-y-cursos.html">Apps y cursos</a>
         <a href="recursos.html">Recursos</a>
         <a href="herramientas.html">Herramientas</a>
@@ -172,7 +186,7 @@
     <div class="wrap">
       <span class="badge">Hecho por un maestro, para maestros de Castilla y León</span>
       <h1>Herramientas que nacen en el aula y vuelven al aula</h1>
-      <p class="lead">29 apps y 9 cursos para el día a día de Primaria: evaluar, organizar, practicar y aprender — todo pensado desde dentro de una clase real.</p>
+      <p class="lead">30 apps de aula para evaluar, organizar, practicar y aprender, junto a 9 cursos online y 4 apps de otros proyectos.</p>
       <div class="hero-actions">
         <a href="apps-y-cursos.html" class="btn btn-emerald">Descubrir las apps</a>
         <a href="#formacion" class="btn btn-outline">Ver formación</a>
@@ -186,7 +200,7 @@
 
   <section class="stats">
     <div class="stat">
-      <p class="num" style="color:var(--teal);">29</p>
+      <p class="num" style="color:var(--teal);">30</p>
       <p>apps de aula</p>
     </div>
     <div class="stat">
@@ -196,6 +210,20 @@
     <div class="stat">
       <p class="num" style="color:var(--navy);">2 años</p>
       <p>de ensayo-error real</p>
+    </div>
+  </section>
+
+  <section id="ruta-ia">
+    <div class="wrap">
+      <div class="method-intro">
+        <div>
+          <p class="eyebrow">Formación y acompañamiento · iAprendizaje</p>
+          <h2>Ruta IA de Centro</h2>
+          <p>Una propuesta de acompañamiento para que los centros incorporen la IA con criterio: acuerdos con la dirección, formación práctica del profesorado y seguimiento después de las sesiones.</p>
+          <p>Cada fase plantea un resultado concreto para el centro. Los centros interesados pueden consultar una posible colaboración, con alcance y condiciones por acordar.</p>
+        </div>
+        <a href="ruta-ia.html" class="btn btn-emerald">Conocer el proyecto →</a>
+      </div>
     </div>
   </section>
 
@@ -243,7 +271,7 @@
           </div>
         </div>
         <div class="apps-more">
-          <a href="apps-y-cursos.html">Ver las 29 apps y 9 cursos completos →</a>
+          <a href="apps-y-cursos.html">Ver las 34 apps y 9 cursos completos →</a>
         </div>
       </div>
     </div>
@@ -289,10 +317,10 @@
 <script>
   const btn = document.getElementById('hamburger');
   const links = document.getElementById('navLinks');
-  btn.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open);
-  });
+  function closeMenu(){links.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Abrir menú');}
+  btn.addEventListener('click',()=>{const open=links.classList.toggle('open');btn.setAttribute('aria-expanded',String(open));btn.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();btn.focus();}});
 </script>
 
 </body>

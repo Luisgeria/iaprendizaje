@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apps y cursos — iAprendizaje</title>
-<meta name="description" content="29 apps y 9 cursos online de iAprendizaje, nacidos de necesidades reales de aula.">
+<meta name="description" content="34 apps: 30 para el aula y 4 de otros proyectos, además de 9 cursos online de iAprendizaje.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Karla:wght@400;500;600;700&display=swap">
 <style>
@@ -57,7 +57,7 @@
   .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;}
   .hamburger span{width:24px;height:2px;background:var(--navy);border-radius:2px;}
 
-  @media (max-width:860px){
+  @media (max-width:1120px){
     .nav-links{
       position:absolute;top:100%;left:0;right:0;background:var(--surface);
       flex-direction:column;gap:0;padding:8px 24px 20px;border-bottom:1px solid var(--line);
@@ -130,6 +130,19 @@
     .hero h1{font-size:32px;}
     .apps-section{padding:40px 24px;border-radius:20px;}
   }
+
+  /* Navegación ampliada y accesibilidad */
+  .nav-links{gap:18px;font-size:14px;}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:4px;}
+  section[id]{scroll-margin-top:100px;}
+  .hamburger{min-width:44px;min-height:44px;align-items:center;justify-content:center;}
+  .nav-links.open{max-height:calc(100dvh - 72px);overflow-y:auto;}
+  .method-intro{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:36px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px;}
+  .method-intro h2{font-size:30px;margin:0 0 10px;}
+  .method-intro p{max-width:720px;color:var(--text);margin:0 0 12px;}
+  .eyebrow{color:var(--teal);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+  @media(max-width:760px){.method-intro{grid-template-columns:1fr;padding:26px;}.method-intro h2{font-size:27px;}}
+
 </style>
 
 <style>
@@ -176,6 +189,19 @@
   @media(max-width:800px){.grid3,.grid4{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:520px){.grid3,.grid4{grid-template-columns:1fr;}}
   @media(max-width:760px){.page-hero h1{font-size:26px;}}
+
+  /* Navegación ampliada y accesibilidad */
+  .nav-links{gap:18px;font-size:14px;}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:4px;}
+  section[id]{scroll-margin-top:100px;}
+  .hamburger{min-width:44px;min-height:44px;align-items:center;justify-content:center;}
+  .nav-links.open{max-height:calc(100dvh - 72px);overflow-y:auto;}
+  .method-intro{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:36px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px;}
+  .method-intro h2{font-size:30px;margin:0 0 10px;}
+  .method-intro p{max-width:720px;color:var(--text);margin:0 0 12px;}
+  .eyebrow{color:var(--teal);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+  @media(max-width:760px){.method-intro{grid-template-columns:1fr;padding:26px;}.method-intro h2{font-size:27px;}}
+
 </style>
 
 <style>
@@ -197,6 +223,19 @@
   .legal-body p, .legal-body li{font-size:14px;color:var(--text);line-height:1.7;}
   .legal-body ul{padding-left:20px;margin:0 0 12px;}
   .legal-disclaimer{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:13px;color:var(--text);margin-bottom:32px;}
+
+  /* Navegación ampliada y accesibilidad */
+  .nav-links{gap:18px;font-size:14px;}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:4px;}
+  section[id]{scroll-margin-top:100px;}
+  .hamburger{min-width:44px;min-height:44px;align-items:center;justify-content:center;}
+  .nav-links.open{max-height:calc(100dvh - 72px);overflow-y:auto;}
+  .method-intro{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:36px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px;}
+  .method-intro h2{font-size:30px;margin:0 0 10px;}
+  .method-intro p{max-width:720px;color:var(--text);margin:0 0 12px;}
+  .eyebrow{color:var(--teal);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+  @media(max-width:760px){.method-intro{grid-template-columns:1fr;padding:26px;}.method-intro h2{font-size:27px;}}
+
 </style>
 </head>
 <body>
@@ -211,6 +250,7 @@
       <div class="nav-links" id="navLinks">
         <a href="index.html">Inicio</a>
         <a href="index.html#formacion">Formación</a>
+        <a href="ruta-ia.html">Ruta IA</a>
         <a href="apps-y-cursos.html" aria-current="page">Apps y cursos</a>
         <a href="recursos.html">Recursos</a>
         <a href="herramientas.html">Herramientas</a>
@@ -231,16 +271,16 @@
   <div class="wrap page-hero">
     <span class="eyebrow">VIBE CODING EDUCATIVO</span>
     <h1>Apps y cursos</h1>
-    <p class="lead">29 apps en producción y 9 cursos online — el catálogo completo, nacido de necesidades reales de aula (y algún proyecto personal por el camino).</p>
+    <p class="lead">34 apps en producción y 9 cursos online — el catálogo completo, nacido de necesidades reales de aula (y algún proyecto personal por el camino).</p>
   </div>
 
   <div class="wrap" style="padding:32px 0 8px;">
     <div class="apps-section">
       <div class="section-head" style="text-align:left;margin:0 0 24px;">
-        <h2 style="margin:0 0 8px;">Apps en producción (29)</h2>
+        <h2 style="margin:0 0 8px;">Apps en producción (34)</h2>
       </div>
       <div class="apps-grid">
-        <div class="subgroup-label">Para el aula (26)</div>
+        <div class="subgroup-label">Para el aula (30)</div>
           <div class="app-card">
             <span class="icon">🏃</span>
             <h4>Carrera Solidaria</h4>
@@ -320,6 +360,12 @@
             <a href="https://gestor-kanban-de-tareas.vercel.app/" style="display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--emerald);">Abrir →</a>
           </div>
           <div class="app-card">
+            <span class="icon">✦</span>
+            <h4>Gimnasio mental</h4>
+            <p>Actividades de atención, memoria, lenguaje, cálculo y otras habilidades, con tres franjas de edad y fichas imprimibles. Guarda el progreso en el navegador, sin pedir nombres.</p>
+            <a href="https://gimnasio-mental-iota.vercel.app/" style="display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--emerald);">Abrir →</a>
+          </div>
+          <div class="app-card">
             <span class="icon">🎯</span>
             <h4>Gymkana</h4>
             <p>Organiza pruebas y puntuaciones de una gymkana educativa. Pensada para actividades de dinamización en el centro.</p>
@@ -348,6 +394,12 @@
             <h4>Notas JCyL</h4>
             <p>Consulta y organiza calificaciones siguiendo el formato de la Junta de Castilla y León. Simplifica el seguimiento de notas.</p>
             <a href="https://iaprendizaje-notas-jcyl.vercel.app/" style="display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--emerald);">Abrir →</a>
+          </div>
+          <div class="app-card">
+            <span class="icon">Aa</span>
+            <h4>Plan Lector Lorca</h4>
+            <p>El plan lector del CEIP Puente de Simancas: un recorrido mensual que une lectura, escritura, oralidad, creatividad y ortografía a través de Lorca.</p>
+            <a href="https://lorca-plan-lector.vercel.app/" style="display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--emerald);">Abrir →</a>
           </div>
           <div class="app-card">
             <span class="icon">📋</span>
@@ -392,12 +444,24 @@
             <a href="https://ruleta-de-atencion.vercel.app/" style="display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--emerald);">Abrir →</a>
           </div>
           <div class="app-card">
+            <span class="icon">⇄</span>
+            <h4>Sorteo de equipos</h4>
+            <p>Forma equipos mezclando alumnado de distintos cursos a partir de una lista cargada en el navegador. Permite mostrar el sorteo en la pizarra y exportar los equipos a PDF.</p>
+            <a href="https://sorteo-equipos.surge.sh" style="display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--emerald);">Abrir →</a>
+          </div>
+          <div class="app-card">
             <span class="icon">⏱️</span>
             <h4>StudyFlow</h4>
             <p>Planificador de estudio con seguimiento de tareas y tiempo. Ayuda al alumnado a organizar su rutina de trabajo.</p>
             <a href="https://study-flow-sooty.vercel.app/" style="display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--emerald);">Abrir →</a>
           </div>
-        <div class="subgroup-label">Otros proyectos (3)</div>
+          <div class="app-card">
+            <span class="icon">↔</span>
+            <h4>Tira y aprende</h4>
+            <p>Juego de preguntas para dos equipos en una misma pantalla: Matemáticas, Lengua, Ciencias, Educación Física y modo mixto. Cada acierto acerca la cuerda a su equipo.</p>
+            <a href="https://tira-y-aprende.surge.sh" style="display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--emerald);">Abrir →</a>
+          </div>
+        <div class="subgroup-label">Otros proyectos (4)</div>
           <div class="app-card">
             <span class="icon">🧠</span>
             <h4>Agente de Inteligencia Estratégica</h4>
@@ -409,6 +473,12 @@
             <h4>Análisis de Reputación</h4>
             <p>Analiza la reputación digital de una marca o perfil a partir de fuentes abiertas. Pensada para tareas de investigación y OSINT aplicado.</p>
             <a href="https://analisis-de-reputacion.vercel.app/" style="display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--emerald);">Abrir →</a>
+          </div>
+          <div class="app-card">
+            <span class="icon">☀</span>
+            <h4>Estrés térmico</h4>
+            <p>Estima el calor para orientar los entrenamientos a partir de datos meteorológicos. Compara franjas horarias y próximos días; es una estimación, no una medición oficial.</p>
+            <a href="https://luisgeria-estres-termico.surge.sh" style="display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--emerald);">Abrir →</a>
           </div>
           <div class="app-card">
             <span class="icon">✍️</span>
@@ -547,10 +617,10 @@
 <script>
   const btn = document.getElementById('hamburger');
   const links = document.getElementById('navLinks');
-  btn.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open);
-  });
+  function closeMenu(){links.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Abrir menú');}
+  btn.addEventListener('click',()=>{const open=links.classList.toggle('open');btn.setAttribute('aria-expanded',String(open));btn.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();btn.focus();}});
 </script>
 
 </body>

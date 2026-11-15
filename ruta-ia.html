@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruta IA de Centro | iAprendizaje</title>
+<meta name="description" content="Ruta IA de Centro, una propuesta de iAprendizaje para acompañar a los centros en el uso de la IA: criterios de centro, formación práctica, mentorización y revisión.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Karla:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --bg:#FBF7F0;
+    --surface:#FFFFFF;
+    --navy:#16345C;
+    --teal:#1E8F82;
+    --teal-dark:#166C63;
+    --emerald:#2FAE86;
+    --text:#3A4B5C;
+    --line:#E9E2D3;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--navy);
+    font-family:'Karla',sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,.display{font-family:'Fredoka',sans-serif;}
+  a{color:var(--teal);text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .btn{
+    display:inline-block;padding:14px 28px;border-radius:28px;
+    font-weight:600;font-size:15px;border:1px solid transparent;
+    transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-emerald{background:var(--emerald);color:#fff;}
+  .btn-outline{background:var(--surface);color:var(--navy);border-color:var(--line);}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,247,240,.92);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{width:36px;height:auto;}
+  .brand span{font-size:20px;font-weight:600;}
+  .nav-links{display:flex;gap:26px;font-size:15px;font-weight:500;}
+  .nav-links a{color:var(--navy);}
+  .nav-links a:hover, .nav-links a[aria-current]{color:var(--teal);}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;}
+  .hamburger span{width:24px;height:2px;background:var(--navy);border-radius:2px;}
+
+  @media (max-width:1120px){
+    .nav-links{
+      position:absolute;top:100%;left:0;right:0;background:var(--surface);
+      flex-direction:column;gap:0;padding:8px 24px 20px;border-bottom:1px solid var(--line);
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:12px 0;border-bottom:1px solid var(--line);}
+    .nav-links a:last-child{border-bottom:none;}
+    .nav-cta .btn{display:none;}
+    .hamburger{display:flex;}
+  }
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;padding:72px 0 24px;}
+  .blob{position:absolute;border-radius:50%;z-index:0;}
+  .blob-1{width:420px;height:420px;background:var(--emerald);opacity:.10;top:-160px;right:-140px;}
+  .blob-2{width:340px;height:340px;background:var(--teal);opacity:.08;bottom:-120px;left:-140px;}
+  .hero .wrap{position:relative;z-index:1;text-align:center;}
+  .badge{
+    display:inline-block;background:var(--surface);border-radius:24px;
+    padding:8px 18px;font-size:13px;font-weight:600;color:var(--teal);
+    margin-bottom:22px;border:1px solid var(--line);
+  }
+  .hero h1{font-size:44px;line-height:1.18;font-weight:600;margin:0 auto 20px;max-width:760px;}
+  .hero p.lead{font-size:17px;color:var(--text);max-width:560px;margin:0 auto 30px;}
+  .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+  .hero-photo{margin-top:48px;border-radius:28px;overflow:hidden;position:relative;z-index:1;}
+  .hero-photo img{width:100%;height:auto;object-fit:cover;max-height:520px;}
+
+  /* STATS */
+  .stats{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;padding:56px 0;}
+  .stat{background:var(--surface);border-radius:20px;padding:26px 36px;text-align:center;min-width:160px;border:1px solid var(--line);}
+  .stat .num{font-size:32px;font-weight:600;margin:0;}
+  .stat p{margin:6px 0 0;font-size:13px;color:var(--text);}
+
+  /* SECTION HEADINGS */
+  section{padding:8px 0 64px;}
+  .section-head{max-width:620px;margin:0 auto 36px;text-align:center;}
+  .section-head h2{font-size:30px;font-weight:600;margin:0 0 12px;}
+  .section-head p{font-size:15px;color:var(--text);margin:0;}
+
+  /* FORMACIÓN */
+  .formacion-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .card{background:var(--surface);border-radius:20px;padding:28px;border:1px solid var(--line);}
+  .card h3{margin:0 0 8px;font-size:17px;font-family:'Karla',sans-serif;font-weight:700;}
+  .card p{margin:0;font-size:14px;color:var(--text);}
+
+  /* APPS Y CURSOS */
+  .apps-section{background:var(--navy);border-radius:32px;padding:56px 40px;color:#fff;}
+  .apps-section .section-head h2, .apps-section .section-head p{color:#fff;}
+  .apps-section .section-head p{color:#B9C9D1;}
+  .apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .app-card{background:rgba(255,255,255,.06);border-radius:16px;padding:22px;}
+  .app-card .icon{font-size:22px;margin-bottom:12px;display:block;line-height:1;}
+  .app-card h4{margin:0 0 6px;font-size:15px;}
+  .app-card p{margin:0;font-size:13px;color:#B9C9D1;}
+  .apps-more{text-align:center;margin-top:28px;}
+  .apps-more a{color:var(--emerald);font-weight:600;}
+
+  /* CONTACTO / FOOTER */
+  footer{background:var(--surface);border-top:1px solid var(--line);padding:56px 0 32px;margin-top:24px;}
+  .contact-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;padding-bottom:32px;border-bottom:1px solid var(--line);margin-bottom:24px;}
+  .contact-row h3{margin:0 0 8px;font-size:22px;}
+  .contact-row p{margin:0;font-size:14px;color:var(--text);}
+  .foot-meta{display:flex;justify-content:space-between;font-size:13px;color:#8A99A6;flex-wrap:wrap;gap:8px;}
+  .foot-links{display:flex;gap:60px;padding-bottom:28px;flex-wrap:wrap;}
+  .foot-col{display:flex;flex-direction:column;gap:8px;}
+  .foot-col-title{font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+  .foot-col a{font-size:13px;color:var(--text);}
+  .foot-col a:hover{color:var(--teal);}
+
+  @media (max-width:760px){
+    .formacion-grid, .apps-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:32px;}
+    .apps-section{padding:40px 24px;border-radius:20px;}
+  }
+
+  /* Navegación ampliada y accesibilidad */
+  .nav-links{gap:18px;font-size:14px;}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:4px;}
+  section[id]{scroll-margin-top:100px;}
+  .hamburger{min-width:44px;min-height:44px;align-items:center;justify-content:center;}
+  .nav-links.open{max-height:calc(100dvh - 72px);overflow-y:auto;}
+  .method-intro{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:36px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px;}
+  .method-intro h2{font-size:30px;margin:0 0 10px;}
+  .method-intro p{max-width:720px;color:var(--text);margin:0 0 12px;}
+  .eyebrow{color:var(--teal);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+  @media(max-width:760px){.method-intro{grid-template-columns:1fr;padding:26px;}.method-intro h2{font-size:27px;}}
+
+
+  .method-hero{padding-bottom:52px;}
+  .method-hero .lead{max-width:740px!important;font-size:19px!important;}
+  .method-hero h1{font-size:58px;}
+  .subtitle{font-size:24px;font-weight:600;margin:0 0 20px;}
+  .read-width{max-width:920px;}
+  .content-head{font-size:32px;margin:0 0 18px;line-height:1.2;}
+  .prose{color:var(--text);font-size:17px;}
+  .prose p{margin:0 0 16px;}
+  .status-note{background:#fff;border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:16px;padding:24px;margin-top:28px;color:var(--text);text-align:left;font-size:16px;}
+  .toc{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:28px;}
+  .toc a{padding:10px 16px;border:1px solid var(--line);border-radius:22px;background:#fff;font-size:14px;min-height:44px;}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .detail-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;color:var(--text);}
+  .detail-card h3{color:var(--navy);font-size:21px;margin:0 0 12px;}
+  .detail-card p,.detail-card li{font-size:16px;}
+  .detail-card ul{padding-left:20px;margin-bottom:0;}
+  .detail-card li+li{margin-top:10px;}
+  .phase{display:grid;grid-template-columns:56px 1fr;gap:20px;padding:28px;background:white;border:1px solid var(--line);border-radius:20px;margin-bottom:16px;}
+  .phase-num{font-family:'Fredoka',sans-serif;background:#e7f3ef;color:var(--teal-dark);width:48px;height:48px;display:grid;place-items:center;border-radius:50%;font-size:24px;}
+  .phase h3{font-size:22px;margin:0 0 10px;line-height:1.25;}
+  .phase p{color:var(--text);margin:0 0 12px;font-size:16px;}
+  .phase p:last-child{margin-bottom:0;}
+  .deliverable{background:var(--bg);padding:14px 18px;border-radius:12px;}
+  .state{display:inline-block;font-size:12px;line-height:1.3;font-weight:700;letter-spacing:.03em;color:var(--teal-dark);margin:0 0 14px;}
+  .pending{color:#765626;}
+  .plain-list{padding-left:24px;}.plain-list li{margin-bottom:14px;}
+  .contact-panel{background:var(--navy);color:white;padding:36px;border-radius:24px;}
+  .contact-panel h2{margin:0 0 16px;font-size:30px;}
+  .contact-panel p{color:#e1e8ed;max-width:740px;}
+  .contact-panel a:not(.btn){color:#a7e4d1;text-decoration:underline;overflow-wrap:anywhere;}
+  .contact-panel .btn{background:white;color:var(--navy);margin-top:10px;}
+  .small{font-size:14px!important;}
+  @media(max-width:760px){.twocol{grid-template-columns:1fr;}.phase{grid-template-columns:1fr;padding:24px;gap:14px;}.method-hero h1{font-size:42px;}.content-head{font-size:28px;}.contact-panel{padding:26px;}.subtitle{font-size:21px;}}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">
+        <img src="logo-mark.png" alt="iAprendizaje">
+        <span>iAprendizaje</span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#formacion">Formación</a>
+        <a href="ruta-ia.html" aria-current="page">Ruta IA</a>
+        <a href="apps-y-cursos.html">Apps y cursos</a>
+        <a href="recursos.html">Recursos</a>
+        <a href="herramientas.html">Herramientas</a>
+        <a href="rrss.html">RRSS</a>
+        <a href="publicaciones.html">Publicaciones</a>
+      </div>
+      <div class="nav-cta">
+        <a href="#contacto" class="btn btn-emerald">Contacto</a>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero method-hero">
+    <div class="blob blob-1"></div><div class="blob blob-2"></div>
+    <div class="wrap read-width">
+      <span class="badge">Un proyecto de Luis Ángel González · iAprendizaje</span>
+      <h1>Ruta IA de Centro</h1>
+      <p class="subtitle">Formación y acompañamiento para centros</p>
+      <p class="lead">La formación es el comienzo. El trabajo continúa cuando el profesorado vuelve al aula.</p>
+      <p class="prose">Una propuesta para incorporar la inteligencia artificial con criterio, sin improvisar: trabajar con la dirección, practicar con el profesorado y acompañar las dudas que aparecen después.</p>
+      <div class="hero-actions"><a href="#fases" class="btn btn-emerald">Ver cómo se plantea</a><a href="#contacto" class="btn btn-outline">Consultar para mi centro</a></div>
+      <div class="status-note"><strong>Estado del proyecto.</strong> Ruta IA de Centro es un método diseñado, no un programa ya implantado ni evaluado en centros. Parte de materiales y experiencia formativa reales. La mentorización y el recorrido completo que se describen aquí son una propuesta de trabajo que debe concretarse con cada centro.</div>
+      <div class="toc" aria-label="Contenido de la página"><a href="#propuesta">La propuesta</a><a href="#fases">Las fases</a><a href="#base">Qué existe hoy</a><a href="#limites">Límites</a><a href="#contacto">Para centros</a></div>
+    </div>
+  </section>
+
+  <section id="propuesta"><div class="wrap read-width">
+    <h2 class="content-head">Un recorrido de centro, no una sesión aislada</h2>
+    <div class="prose"><p>Las herramientas cambian. Por eso, la propuesta no consiste en aprender una lista de aplicaciones y dar la formación por terminada. Consiste en acordar para qué se usa la IA, practicar sobre tareas reales, revisar lo producido y actualizar los criterios cuando haga falta.</p><p>El profesor mantiene la supervisión y la decisión pedagógica. La dirección conserva las decisiones del centro. La tecnología es una ayuda, no quien decide qué enseñar ni cómo evaluar.</p></div>
+    <div class="twocol">
+      <article class="detail-card"><h3>Con el equipo directivo</h3><ul><li>Revisar el punto de partida y las preocupaciones del centro.</li><li>Preparar un borrador de criterios: usos permitidos, límites y supervisión.</li><li>Detectar cuestiones que deben consultar con su delegado de protección de datos o con los servicios competentes.</li><li>Revisar el trabajo realizado y los ajustes necesarios.</li></ul></article>
+      <article class="detail-card"><h3>Con el profesorado</h3><ul><li>Practicar con programaciones, actividades, rúbricas y materiales propios.</li><li>Aprender a detectar errores y contrastar respuestas.</li><li>Revisar el material antes de llevarlo a clase.</li><li>Plantear dudas durante una posible fase de acompañamiento, con dedicación acordada.</li></ul></article>
+    </div>
+  </div></section>
+
+  <section id="fases"><div class="wrap read-width">
+    <h2 class="content-head">Cinco fases, con algo concreto que se queda el centro</h2>
+    <p class="prose">Este es el recorrido propuesto. Un curso escolar es una referencia de diseño, no una duración comprometida. Se puede estudiar una actuación puntual o una ruta más amplia, según la necesidad y la disponibilidad.</p>
+    <article class="phase"><div class="phase-num">0</div><div><span class="state">ASPIRACIÓN · FORMATO POR CONCRETAR</span><h3>Escuchar antes de proponer</h3><p>Conversación inicial sobre qué se hace ya con IA, qué necesita el centro y qué preocupa a la dirección y al profesorado: datos, evaluación, familias o tiempo de preparación.</p><p class="deliverable"><strong>Resultado previsto:</strong> una página con el punto de partida y el alcance que tendría sentido estudiar.</p></div></article>
+    <article class="phase"><div class="phase-num">1</div><div><span class="state">ASPIRACIÓN · FASE DISEÑADA</span><h3>Punto de partida y acuerdos</h3><p>Trabajo con la dirección y la coordinación TIC, si existe. Revisar las herramientas y cuentas autorizadas, los usos con datos personales y las necesidades de supervisión, conforme a la normativa y a las instrucciones aplicables al centro.</p><p>No se usan datos reales de alumnado en ejercicios de formación. Las dudas legales o de protección de datos se trasladan a quien corresponda.</p><p class="deliverable"><strong>Resultado previsto:</strong> un borrador de criterios de uso de IA. Lo revisa y aprueba el propio centro; yo no decido por él.</p></div></article>
+    <article class="phase"><div class="phase-num">2</div><div><span class="state">ASPIRACIÓN · APOYADA EN EXPERIENCIA FORMATIVA</span><h3>Formación práctica</h3><p>Sesiones propuestas de dos a tres horas, adaptadas al nivel y a las tareas del profesorado. Preparación de materiales, rúbricas o situaciones de aprendizaje con los criterios de evaluación que aporta el docente.</p><p>La práctica incluye seguridad y lectura crítica: errores, respuestas complacientes, contenido inventado e imágenes manipuladas. Cada resultado debe revisarse antes de usarse.</p><p class="deliverable"><strong>Resultado previsto:</strong> un cuaderno con instrucciones o prompts, ejemplos y materiales trabajados por el profesorado.</p></div></article>
+    <article class="phase"><div class="phase-num">3</div><div><span class="state">ASPIRACIÓN · CAPACIDAD Y DEDICACIÓN POR DECIDIR</span><h3>Mentorización después de la formación</h3><p>La aportación central de la propuesta: que el profesor tenga a quién consultar cuando intenta aplicar lo aprendido. Revisar materiales, resolver dudas y comentar qué ha ocurrido en un grupo real.</p><p>El diseño contempla encuentros breves individuales o en pequeño grupo cada dos o tres semanas y un canal de consultas. Frecuencia, número de participantes, duración y plazo de respuesta deben acordarse antes de empezar; no se ofrecen como disponibilidad garantizada.</p><p class="deliverable"><strong>Resultado previsto:</strong> un registro breve, sin datos identificativos de alumnado, de lo probado, lo que funcionó y lo que conviene cambiar.</p></div></article>
+    <article class="phase"><div class="phase-num">4</div><div><span class="state">ASPIRACIÓN · FASE DISEÑADA</span><h3>Revisión y mantenimiento</h3><p>Revisar con el centro qué se ha hecho y qué necesita cambiar. Actualizar los materiales y los criterios cuando cambien las herramientas o las instrucciones aplicables.</p><p>La valoración partiría del trabajo realizado y de la opinión del profesorado, no de resultados que aún no se han medido.</p><p class="deliverable"><strong>Resultado previsto:</strong> un informe breve con lo observado y propuestas de ajuste.</p></div></article>
+  </div></section>
+
+  <section id="base"><div class="wrap read-width">
+    <h2 class="content-head">Qué existe hoy y qué se quiere desarrollar</h2>
+    <div class="twocol">
+      <article class="detail-card"><span class="state">HECHO</span><h3>Una base de trabajo real</h3><ul><li>Experiencia en formación práctica sobre IA, incluida la jornada «IA para el aula» del 27 de octubre de 2026.</li><li>Materiales de seguridad y uso crítico, como la Guía antifrágil para docentes.</li><li>Experiencia de tutoría online de Microsoft 365. Es experiencia de acompañamiento en otra materia, no una validación de este método de IA.</li><li>Un catálogo propio de 34 apps: 30 para el aula y cuatro de otros proyectos, junto a nueve cursos.</li><li>Un diseño escrito de las fases, sus objetivos y los materiales que se propone entregar.</li></ul><p><a href="apps-y-cursos.html">Explorar el catálogo →</a> · <a href="publicaciones.html">Ver publicaciones →</a> · <a href="curriculum.html">Mi currículo →</a></p></article>
+      <article class="detail-card"><span class="state">ASPIRACIÓN</span><h3>Probar la ruta completa</h3><p>Acompañar a un centro desde los acuerdos iniciales hasta la revisión final, comprobar qué ayuda de verdad y mejorar el diseño con esa experiencia.</p><p>El método recoge ideas de una propuesta técnica propia para incorporar progresivamente la IA a los centros de Castilla y León. Esa propuesta no se presenta como plan oficial, enviado, aprobado ni aplicado.</p><p>La experiencia previa respalda el punto de partida. No permite afirmar todavía que Ruta IA de Centro funcione como programa completo ni atribuirle un impacto demostrado.</p></article>
+    </div>
+  </div></section>
+
+  <section id="limites"><div class="wrap read-width">
+    <h2 class="content-head">Lo que no se promete</h2>
+    <div class="prose"><ul class="plain-list"><li><strong>No se garantizan mejoras académicas.</strong> No hay datos propios del método que permitan afirmarlas.</li><li><strong>No se promete un ahorro concreto de horas.</strong> Si se evalúa, se explicará cómo se ha medido y qué se ha observado.</li><li><strong>No se sustituye al delegado de protección de datos ni al asesoramiento jurídico.</strong> Los materiales legales deben revisarse antes de cada actuación.</li><li><strong>No se traslada la responsabilidad a la IA.</strong> El docente revisa; el centro decide sus criterios.</li><li><strong>No se presentan ideas ajenas como propias.</strong> Los marcos y materiales de otros autores que se utilicen deben citarse y respetar sus condiciones de uso.</li></ul></div>
+    <div class="status-note"><span class="state pending">POR DECIDIR O COMPROBAR</span><p style="margin:0">La dedicación disponible, el número de centros y docentes atendidos, la modalidad, el calendario y las condiciones económicas. Cualquier actuación estará sujeta a la comprobación previa de los requisitos administrativos y de compatibilidad que correspondan. No se publica una tarifa ni se abre una contratación automática.</p></div>
+  </div></section>
+
+  <section id="contacto"><div class="wrap read-width"><div class="contact-panel">
+    <h2>¿Tu centro quiere explorar esta posibilidad?</h2>
+    <p>Podéis escribirme para valorar una charla, un taller práctico o una posible ruta de acompañamiento. La solicitud sirve para estudiar el encaje; no confirma una intervención ni reserva fechas.</p>
+    <p>Contadme el tipo de centro, la localidad, qué os gustaría trabajar y a cuántos docentes iría dirigido. No enviéis nombres, expedientes ni información personal del alumnado.</p>
+    <p>Antes de cualquier actuación se concretarán el alcance, la disponibilidad y las condiciones, y se comprobarán los requisitos que correspondan.</p>
+    <a href="mailto:luisgeria.ia@gmail.com?subject=Consulta%20Ruta%20IA%20de%20Centro%20-%20centro%20educativo" class="btn">Consultar sobre Ruta IA de Centro</a>
+    <p class="small">También puedes escribir directamente a <a href="mailto:luisgeria.ia@gmail.com">luisgeria.ia@gmail.com</a>.</p>
+  </div></div></section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-row">
+      <div>
+        <h3>iAprendizaje, desde el aula</h3>
+        <p>Cuéntame el problema y vemos si ya tengo una herramienta para él — o la construimos.</p>
+      </div>
+      <a href="mailto:luisgeria.ia@gmail.com" class="btn btn-emerald">Escribir a luisgeria.ia@gmail.com</a>
+    </div>
+    <div class="foot-links">
+      <div class="foot-col">
+        <span class="foot-col-title">Sobre mí</span>
+        <a href="curriculum.html" target="_blank" rel="noopener">Mi currículo</a>
+        <a href="curriculum.pdf" target="_blank" rel="noopener">Currículo en PDF</a>
+      </div>
+      <div class="foot-col">
+        <span class="foot-col-title">Redes</span>
+        <a href="https://www.youtube.com/@IAprendizaje_tv" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.ivoox.com/podcast-radio-iaprendizaje_sq_f12478420_1.html" target="_blank" rel="noopener">Podcast</a>
+        <a href="https://educacioncriticaia.blogspot.com/" target="_blank" rel="noopener">Blog</a>
+        <a href="https://x.com/IA_prendizaje" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+      <div class="foot-col">
+        <span class="foot-col-title">Legal</span>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+    <div class="foot-meta">
+      <span>© 2026 iAprendizaje</span>
+      <span>@IAprendizaje</span>
+    </div>
+  </div>
+</footer>
+<script>
+  const btn = document.getElementById('hamburger');
+  const links = document.getElementById('navLinks');
+  function closeMenu(){links.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Abrir menú');}
+  btn.addEventListener('click',()=>{const open=links.classList.toggle('open');btn.setAttribute('aria-expanded',String(open));btn.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();btn.focus();}});
+</script>
+</body>
+</html>
