@@ -27,3 +27,15 @@ Preparado sobre los dos HTML del paquete de 34 apps del 15 de noviembre, no sobr
 Revisado en Chrome a 1440, 390 y 320 píxeles: sin desbordamiento horizontal. Comprobados los enlaces entre las tres páginas y la navegación móvil.
 Los enlaces y contenidos anteriores del catálogo quedan conservados.
 No se ha publicado nada en GitHub ni en Vercel: este paquete está preparado para tu revisión y subida.
+
+CORRECCIÓN CFIE · 15 de noviembre de 2026
+Los talleres y jornadas del CFIE se presentan únicamente como ejemplos de experiencia como ponente invitado. Los organiza y convoca el CFIE, no Luis. No se anuncian como talleres propios ni convocatorias disponibles desde esta web. Se ha corregido el bloque Formación de index.html y la experiencia previa de ruta-ia.html. apps-y-cursos.html permanece idéntico al paquete anterior.
+Este archivo actualizado sustituye a la descarga anterior del mismo ZIP. Si ya lo habías descargado, vuelve a descargarlo.
+
+Revisión de esta corrección: comprobado que solo cambian las tres menciones de experiencia CFIE indicadas, además de este LEEME. Inspección visual de los bloques corregidos a 1440, 390 y 320 píxeles, conservando el estilo original. No se modifica lógica, enlaces, formularios, permisos ni el catálogo. Al ser una corrección de texto estático, no se introducen claves, autenticación, base de datos, pagos ni servicios de correo. Para revertir, conserva los HTML anteriores antes de sustituirlos. Las imágenes existentes del repositorio no se incluyen ni se modifican.
+
+DOS AJUSTES FINALES · 15 de noviembre de 2026
+- En «Con el equipo directivo» se añade Inspección educativa entre las instancias de consulta, junto al delegado de protección de datos y los servicios competentes.
+- En la fase 1 se elimina «si existe» de la referencia a la coordinación TIC.
+Se conserva la corrección CFIE anterior. Solo cambia el texto de esos dos puntos de ruta-ia.html y esta nota; index.html y apps-y-cursos.html son idénticos a la versión con la corrección CFIE. Se mantienen las 34 apps y los nueve cursos.
+Comprobación de esta revisión: comparación exacta de archivos y vista de los bloques modificados en Chrome a 1440, 390 y 320 píxeles, sin desbordamiento horizontal. No hay cambios en código ejecutable, enlaces, permisos ni servicios. No se publica nada en GitHub ni en Vercel. Las imágenes existentes deben mantenerse. Conserva tus HTML anteriores para poder revertir.
